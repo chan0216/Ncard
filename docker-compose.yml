@@ -10,6 +10,7 @@ services:
       - network
     depends_on:
       - flask
+    restart: always
   flask:
     build:
       context: ./
