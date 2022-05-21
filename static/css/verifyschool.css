@@ -1,0 +1,41 @@
+.userform {
+  width: 526px;
+  height: 480px;
+  background-color: white;
+  border-radius: 10px;
+}
+.userform__card {
+  padding: 40px 60px 0 60px;
+}
+.userform__card > h5 {
+  line-height: 30px;
+  font-weight: bold;
+}
+.userform__card * {
+  width: 406px;
+}
+input {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.remind {
+  font-size: 10px;
+}
+select {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+select:focus {
+  outline: none;
+}
+.userform__submit {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}

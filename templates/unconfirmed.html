@@ -1,0 +1,19 @@
+<!DOCTYPE html> {% extends "index.html" %}{% block title %}
+<link rel="stylesheet" href="../static/css/unconfirmed.css" />
+<title>驗證信箱| Ncard</title>
+{% endblock %}{% block nav %} {% endblock %} {% block main %}
+<main class="main unconfirm d-flex justify-content-center align-items-center">
+  <div
+    class="menu rounded-2 d-flex justify-content-center align-items-center flex-column"
+  >
+    {% block section%}
+    <p class="mb-1">查收你的電子郵件</p>
+    <p class="mb-1">我們已經寄送電子至<span class="email"></span></p>
+    <p class="mb-1">請點擊郵件中的連結已完成註冊</p>
+  </div>
+
+  {% endblock %}
+</main>
+{% endblock %} {% block link %}
+<script src="../static/js/unconfirmed.js"></script>
+{% endblock %}

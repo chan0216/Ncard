@@ -1,0 +1,41 @@
+<!DOCTYPE html> {% extends "index.html" %} {% block title %}
+<link rel="stylesheet" href="../static/css/newpost.css" />
+{% endblock %} {% block main %}
+<div class="mt-4 newpost d-flex justify-content-center">
+  <div class="newpost__card">
+    <div class="newpost__area mt-4">
+      <textarea
+        name="title"
+        class="newpost__title"
+        type="text"
+        placeholder="標題"
+        rows="1"
+      ></textarea>
+      <div
+        class="newpost__content"
+        contenteditable="true"
+        placeholder="內容......"
+      ></div>
+      <div
+        class="newpost__btnbar d-flex justify-content-between align-items-center"
+      >
+        <label class="btninfo">
+          <input
+            id="upload_img"
+            style="display: none"
+            accept="image/png, image/jpeg"
+            type="file"
+          />
+          <i class="bi bi-image-fill" style="font-size: 24px"></i>
+        </label>
+        <div class="btn d-flex align-items-center">
+          <button class="cancel me-2">取消</button>
+          <button class="submit">送出</button>
+        </div>
+      </div>
+    </div>
+    <!-- <textarea name="" id="" cols="30" rows="10"></textarea> -->
+  </div>
+</div>
+<script src="../static/js/newpost.js"></script>
+{% endblock %}

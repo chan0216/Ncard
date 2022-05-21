@@ -1,0 +1,9 @@
+.welcome {
+  background-color: rgb(0, 50, 78);
+  height: 100%;
+  width: 100%;
+}
+.welcome-card {
+  width: 700px;
+  height: 300px;
+}
