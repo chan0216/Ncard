@@ -10,7 +10,7 @@ main {
 }
 .index__card {
   width: 728px;
-  height: 550px;
+  height: 800px;
   background-color: white;
 }
 .card__menu {
@@ -25,4 +25,40 @@ main {
   width: 64px;
   height: 61px;
   border-bottom: 2px solid rgb(51, 151, 207);
+}
+.content_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 608px;
+  height: 157px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+.women {
+  color: rgb(203, 58, 107);
+}
+.man {
+  color: rgb(36, 144, 191);
+}
+.first_img {
+  max-width: 84px;
+  max-height: 84px;
+}
+.text_div {
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 500px;
+}
+.icondiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.userschool {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-bottom: 0;
 }

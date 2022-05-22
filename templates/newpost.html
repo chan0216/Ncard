@@ -4,9 +4,15 @@
 <div class="mt-4 newpost d-flex justify-content-center">
   <div class="newpost__card">
     <div class="newpost__area mt-4">
+      <div class="newpost__profile d-flex align-items-center">
+        <i class="bi bi-person-circle man" style="font-size: 2rem"></i>
+        <i class="bi bi-person-circle women" style="font-size: 2rem"></i>
+
+        <div class="newpost__data"></div>
+      </div>
       <textarea
         name="title"
-        class="newpost__title"
+        class="newpost__title mt-4"
         type="text"
         placeholder="標題"
         rows="1"
@@ -30,7 +36,7 @@
         </label>
         <div class="btn d-flex align-items-center">
           <button class="cancel me-2">取消</button>
-          <button class="submit">送出</button>
+          <button class="submit" onclick="newPost()">送出</button>
         </div>
       </div>
     </div>

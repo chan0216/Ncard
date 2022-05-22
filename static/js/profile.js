@@ -17,13 +17,15 @@ async function submitProfile() {
   };
   const response = await fetch("/api/profile", config);
   const data = await response.json();
-  console.log(data);
-  // if (data.data) {
-  //   document.querySelector("body").style.visibility = "visible";
-  //   let emailtext = document.querySelector(".email");
-  //   emailtext.textContent = data.data.Email;
-  // } else {
-  //   window.location.replace("/");
-  // }
+  if (data.ok) {
+    let p = document.createElement("p");
+    p.textContent = "填寫成功";
+    p.style.marginBottom = "0";
+    document.querySelector(".userform__card").append(p);
+  } else {
+    let p = document.createElement("p");
+    p.textContent = "填寫失敗，請重新填寫";
+    p.style.marginBottom = "0";
+    document.querySelector(".userform__card").append(p);
+  }
 }
-// submitData();
