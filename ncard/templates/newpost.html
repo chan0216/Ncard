@@ -1,0 +1,52 @@
+<!DOCTYPE html> {% extends "index.html" %} {% block title %}
+<link rel="stylesheet" href="../static/css/newpost.css" />
+<title>發文 | Ncard</title>
+{% endblock %} {% block main %}
+<div class="mt-4 newpost d-flex justify-content-center">
+  <div class="newpost__card">
+    <div class="newpost__area mt-4">
+      <div class="newpost__profile d-flex align-items-center">
+        <i class="bi bi-person-circle man" style="font-size: 2rem"></i>
+        <i class="bi bi-person-circle women" style="font-size: 2rem"></i>
+
+        <div class="newpost__data"></div>
+      </div>
+      <p class="Prompt"></p>
+      <textarea
+        name="title"
+        class="newpost__title mt-4"
+        type="text"
+        placeholder="標題"
+        rows="1"
+      ></textarea>
+      <div
+        class="newpost__content"
+        contenteditable="true"
+        placeholder="內容......"
+      ></div>
+      <div
+        class="newpost__btnbar d-flex justify-content-between align-items-center"
+      >
+        <label class="btninfo">
+          <input
+            id="upload_img"
+            style="display: none"
+            accept="image/png, image/jpeg"
+            type="file"
+          />
+          <i class="bi bi-image-fill" style="font-size: 24px"></i>
+        </label>
+        <div class="btn d-flex align-items-center">
+          <button class="cancel me-2" onclick="location.href='/'">取消</button>
+          <button class="submit" onclick="newPost()">送出</button>
+
+          <p class="warning"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block link %}
+<script src="../static/js/user.js"></script>
+<script src="../static/js/newpost.js"></script>
+{% endblock %}

@@ -1,0 +1,45 @@
+body,
+html {
+  height: 100%;
+}
+
+header {
+  background-color: #d8dde0;
+}
+nav {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 48px;
+}
+.bi-pencil-fill,
+.bi-wallet2,
+.bi-envelope-fill,
+.bi-person-fill,
+.nav-link,
+.navbar-brand {
+  color: rgb(26, 25, 25);
+}
+
+.bi-wallet2 {
+  display: inline-block;
+  transform: rotate(-90deg);
+}
+
+.nav-link:hover,
+.navbar-brand:hover {
+  color: black;
+}
+.nav-user {
+  visibility: hidden;
+}
+.nav-stranger {
+  display: none;
+}
+.navbar-brand {
+  margin-left: 10px;
+}
+nav-link:hover,
+navbar-brand:hover {
+  text-decoration: none;
+  color: black;
+}

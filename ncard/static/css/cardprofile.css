@@ -1,0 +1,133 @@
+@import "style.css";
+.member__card {
+  width: 208px;
+  height: 239px;
+  color: white;
+}
+.member__post {
+  width: 760px;
+  min-height: 660px;
+
+  border-radius: 10px;
+  height: fit-content;
+}
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+
+.ncard__card {
+  background-color: white;
+  border-radius: 4px;
+  display: none;
+}
+.simpledata {
+  margin: 0 auto;
+  position: relative;
+}
+.imagediv {
+  width: 200px;
+  height: 200px;
+  border: 1.5px solid rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+
+.showprofile {
+  padding: 12px 60px 50px;
+  margin: 0 auto;
+  position: relative;
+}
+.label {
+  color: rgb(51, 151, 207);
+  margin-bottom: 8px;
+}
+.image {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+
+  border-radius: 8px;
+}
+textarea {
+  font-weight: 500;
+  width: 100%;
+  outline: none;
+  border: none;
+  line-height: 40px;
+  padding: 0;
+  font-size: 30px;
+}
+.btninfo {
+  position: absolute;
+  left: 430px;
+  top: 165px;
+  height: 44px;
+  width: 44px;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  cursor: pointer;
+  align-items: center;
+}
+.submit {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+  position: absolute;
+  right: 50px;
+  bottom: 5px;
+}
+.noprofile {
+  background-color: rgb(242, 243, 244);
+  padding: 20px 60px;
+  border-radius: 12px;
+  display: none;
+}
+.noprofile__title {
+  height: 60px;
+  line-height: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+}
+.noprofile__card {
+  display: flex;
+  height: 500px;
+  justify-content: center;
+  align-items: center;
+}
+.noprofile__poster {
+  font-size: 16px;
+  margin-top: 20px;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.noprofile_p {
+  max-width: 270px;
+  color: rgba(0, 0, 0, 0.5);
+}
+.redirected {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}
+.wel_title {
+  margin: 10px auto 0;
+  color: rgba(0, 0, 0, 0.5);
+}
+.profile__warning {
+  color: rgb(244, 57, 57);
+  margin-bottom: 0;
+}
