@@ -24,7 +24,7 @@ Password：test
 
 系統架構圖
 --
-<img width="480" alt="image" src="https://user-images.githubusercontent.com/94737861/173253578-e1ce1571-55e1-4c46-be38-bf397c1ff2c0.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173253578-e1ce1571-55e1-4c46-be38-bf397c1ff2c0.png">
 
 
 主要功能
