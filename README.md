@@ -22,6 +22,10 @@ Password：test
 - 使用 AWS S3儲存使用者上傳的圖片與頭貼，並利用Cloudfront建立CDN
 - 使用 AWS RDS建構MySQL資料庫
 
+系統架構圖
+--
+<img width="480" alt="image" src="https://user-images.githubusercontent.com/94737861/173253578-e1ce1571-55e1-4c46-be38-bf397c1ff2c0.png">
+
 
 主要功能
 ---
