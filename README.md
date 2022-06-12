@@ -13,18 +13,14 @@ User：test@test.com
 Password：test
 
 使用技術
----
+--
 - python Flask
-- 支援 Google OAuth 實現第三方登入
-- 使用 Docker部屬
-- 使用 Socket.io 支援即時互動的聊天室
-- 使用 Nginx 作為 Reverse Proxy 並支援 HTTPS 的建置
-- 使用 AWS S3儲存使用者上傳的圖片與及頭貼，並利用Cloudfront建立CDN 
-- 使用 AWS RDS 建構 MySQL資料庫
-
-系統架構圖
----
-<img width="432" alt="image" src="https://user-images.githubusercontent.com/94737861/173253333-55741748-b054-4ac6-9fe0-b30cbb916ced.png">
+- 使用 Docker 部屬
+- 使用 Google OAuth 實現第三方登入
+- 使用 Socket.io 支援即時互動聊天室。
+- 使用 Nginx 作為 Reverse Proxy 並支援 HTTPS 的建置。
+- 使用 AWS S3儲存使用者上傳的圖片與頭貼，並利用Cloudfront建立CDN
+- 使用 AWS RDS建構MySQL資料庫
 
 
 主要功能
@@ -46,4 +42,3 @@ Password：test
 <img  width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252389-a7f129c5-5d7b-4f0b-b910-bde66a20dcff.png">
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252423-230ac23c-8b71-4de9-98dc-cbdfa05c7ef6.png">
-
