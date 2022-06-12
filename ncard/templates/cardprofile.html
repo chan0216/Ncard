@@ -1,0 +1,59 @@
+<!DOCTYPE html> <link rel="stylesheet" href="../static/css/cardprofile.css" />
+<title>抽卡自介 | Ncard</title>
+{% extends "member.html" %} {% block section %}
+<div class="ncard__card my-4">
+  <div class="d-flex justify-content-end">
+    <p class="wel_title"></p>
+  </div>
+  <div class="simpledata d-flex flex-column align-items-center">
+    <div class="imagediv mt-3"></div>
+    <label class="btninfo">
+      <input
+        class="upload_img"
+        id="upload_img"
+        style="display: none"
+        accept="image/png, image/jpeg"
+        type="file"
+      />
+      <i class="bi bi-camera-fill" style="font-size: 24px"></i>
+    </label>
+    <h4 class="realname mt-3"></h4>
+    <p class="school"></p>
+  </div>
+  <div class="showprofile m-4">
+    <p class="label">興趣跟專長</p>
+    <textarea class="interest"></textarea>
+    <p class="label">曾參加過的社團</p>
+    <textarea class="club"></textarea>
+    <p class="label">喜歡的課程</p>
+    <textarea class="course"></textarea>
+    <p class="label">喜歡的國家</p>
+    <textarea class="country"></textarea>
+    <p class="label">自己最近的困擾</p>
+    <textarea class="worry"></textarea>
+    <p class="label">可以交換的事情</p>
+    <textarea class="exchange"></textarea>
+    <p class="label">想嘗試的事情</p>
+    <textarea class="trying mb-3"></textarea>
+
+    <p class="profile__warning"></p>
+
+    <button onclick="postNcard()" class="submit">提交</button>
+  </div>
+</div>
+<div class="noprofile">
+  <div class="noprofile__title">抽卡自我介紹</div>
+  <div class="noprofile__card">
+    <div class="container">
+      <i class="bi bi-hourglass-split" style="font-size: 30px"></i>
+      <h2 class="noprofile__poster">一段期限24小時的緣分</h2>
+      <p class="noprofile_p">
+        填寫資料後，每天午夜一到，會自動抽出一位卡友。如果在下一個午夜到來前你們未能成為卡友，緣分將會永遠消失，再也不會出現。
+      </p>
+      <a href="/verify/school" class="redirected">填寫資料</a>
+    </div>
+  </div>
+</div>
+<script src="../static/js/cardprofile.js"></script>
+
+{% endblock %}

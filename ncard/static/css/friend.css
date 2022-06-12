@@ -1,0 +1,70 @@
+.friend__card {
+  min-height: inherit;
+  padding: 20px 60px;
+  background-color: rgb(242, 243, 244);
+  border-radius: 12px;
+  margin-top: 30px;
+}
+.friend__title {
+  height: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  font-size: 24px;
+  line-height: 60px;
+}
+.friend__list {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 24px;
+}
+.friend_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  border-radius: 12px 12px 0 0;
+}
+.friendimg_div {
+  position: relative;
+  width: 204px;
+  height: 204px;
+}
+.frienddata_div {
+  padding: 12px 16px 16px;
+}
+p {
+  margin-bottom: 8px;
+}
+.friendDiv {
+  background-color: rgb(255, 255, 255);
+  border-radius: 12px;
+}
+.nofriend {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+  display: none;
+}
+.nofriend__card {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.nofriend__p {
+  color: rgba(0, 0, 0, 0.5);
+}
+.crying {
+  width: 100px;
+  height: 100px;
+}
+.ncard_start {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}

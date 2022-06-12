@@ -1,0 +1,187 @@
+body {
+  overflow: hidden;
+}
+.chat__container {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  padding: 28px 20px 0px;
+}
+.chat__friend {
+  width: 314px;
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-right: 15px;
+}
+.friend__room {
+  display: flex;
+  width: 720px;
+  flex-direction: column;
+  background-color: white;
+  position: relative;
+}
+.friend__frame {
+  cursor: pointer;
+  display: flex;
+  width: 314px;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  color: rgba(255, 255, 255, 0.6);
+}
+.img__div {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 0;
+}
+.friend__image {
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+.mail__title {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+.friend__name {
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.9);
+}
+.friend__msg {
+  font-size: 16px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.6);
+}
+.msg__div {
+  width: 224px;
+  padding-left: 10px;
+}
+a:hover {
+  color: inherit;
+}
+.send__message {
+  position: fixed;
+  bottom: 0;
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  background-color: rgb(255, 255, 255);
+  height: 48px;
+  width: inherit;
+  display: flex;
+  align-items: center;
+}
+.friend__nav {
+  height: 60px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.comment__placeholder {
+  padding-left: 40px;
+  color: rgba(0, 0, 0, 0.5);
+}
+textarea {
+  width: inherit;
+  border: none;
+  outline: none;
+}
+.sendmessage__box {
+  width: 100%;
+  padding: 10px 60px 80px;
+  height: 200px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
+.full__content {
+  display: none;
+  background: rgb(255, 255, 255);
+  border-top: 1px solid rgba(0, 0, 0, 0.15);
+  position: fixed;
+  bottom: 0;
+  width: inherit;
+}
+.sendmsg__btnbar {
+  width: inherit;
+  background-color: white;
+  height: 68px;
+  position: fixed;
+  bottom: 0;
+  padding-left: 20px;
+}
+.btninfo {
+  color: rgba(0, 0, 0, 0.386);
+}
+.cancel {
+  outline: none;
+  border: none;
+  background-color: white;
+  color: rgba(0, 0, 0, 0.386);
+}
+.submit {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}
+.friend__inner {
+  display: flex;
+  align-items: center;
+  margin-left: 30px;
+}
+
+.photo__div {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+.profile__photo {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.messages__div {
+  height: 100%;
+  overflow: auto;
+  margin-bottom: 100px;
+}
+.message__div {
+  overflow: auto;
+}
+.talk__div {
+  display: flex;
+  padding: 10px 32px;
+  justify-content: space-between;
+}
+.message__user,
+.create__time {
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.45);
+}
+.left__div {
+  display: flex;
+}
+.msg__text {
+  white-space: break-spaces;
+  word-break: break-word;
+  width: 500px;
+}

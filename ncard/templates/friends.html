@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../static/css/friend.css" />
+<title>我的卡友 | Ncard</title>
+{% extends "member.html" %} {% block section %}
+<div class="friend__card">
+  <div class="friend__title">我的卡友</div>
+  <main>
+    <div class="friend__list"></div>
+  </main>
+  <div class="nofriend">
+    <div class="nofriend__card">
+      <img class="crying" src="../static/image/crying.png" alt="" />
+      <p class="nofriend__title">尚未有卡友</p>
+      <p class="nofriend__p">你還沒有卡友耶…快去抽卡交朋友嘛～</p>
+      <a href="/ncard" class="ncard_start">開始抽卡</a>
+    </div>
+  </div>
+</div>
+
+{% endblock %} {% block link %}
+<script src="../static/js/user.js"></script>
+<script src="../static/js/friends.js"></script>
+<script src="../static/js/member.js"></script>
+{% endblock %}

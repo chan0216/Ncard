@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+{% extends "index.html" %} {% block title %}
+
+<link rel="stylesheet" href="../static/css/member.css" />{% endblock %} {% block
+main %}
+<div class="member d-flex justify-content-center mt-5">
+  <div class="member__card d-flex align-items-center flex-column me-4 mt-4">
+    <h3 id="name"></h3>
+    <p id="school"></p>
+    <div class="btn"></div>
+    <div class="ncardintro mt-3">
+      <i class="bi bi-wallet2 me-2"></i><a href="/my/profile">抽卡自我介紹</a>
+    </div>
+    <div class="ncardfriend mt-3">
+      <i class="bi bi-people-fill me-2"></i>
+      <a href="/my/friends">我的卡友</a>
+    </div>
+  </div>
+  <div class="member__post mt-4">{% block section %} {% endblock %}</div>
+</div>
+{% endblock %} {% block link %}
+<script src="../static/js/user.js"></script>
+<script src="../static/js/member.js"></script>
+{% endblock %}

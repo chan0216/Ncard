@@ -1,0 +1,75 @@
+.userform {
+  width: 526px;
+  height: 480px;
+  background-color: white;
+  border-radius: 10px;
+}
+.userform__card {
+  padding: 40px 60px 0 60px;
+}
+.userform__card > h5 {
+  line-height: 30px;
+  font-weight: bold;
+}
+.userform__card * {
+  width: 406px;
+}
+input {
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  padding: 10px 14px;
+  border-radius: 12px;
+}
+.remind {
+  font-size: 10px;
+}
+select {
+  border-radius: 12px;
+  padding: 10px 14px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+}
+select:focus {
+  outline: none;
+}
+.userform__submit,
+.start__btn {
+  outline: none;
+  border: none;
+  background-color: #3397cf;
+  color: white;
+  padding: 11px 16px;
+  border-radius: 10px;
+}
+.userform__alert {
+  color: red;
+  margin-right: 10px;
+  margin-bottom: 0;
+  margin-top: 10px;
+}
+.userform__popup {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  position: fixed;
+  text-align: center;
+  top: 0;
+  z-index: 2;
+  display: none;
+}
+.popup__confirm {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 120px);
+  z-index: 2;
+  width: 340px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  height: 275px;
+}
+/* .start__btn {
+  outline: none;
+  background-color: #3397cf;
+  border: 1px solid white;
+  color: white;
+  border-radius: 5px;
+} */

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+{% extends "index.html" %} {% block title %}
+<link rel="stylesheet" href="../static/css/style.css" />
+<link rel="stylesheet" href="../static/css/ncard.css" />
+<title>抽卡 | Ncard</title>
+{% endblock %} {% block main %}
+<div class="ncard d-flex justify-content-center">
+  <div class="ncard__card">
+    <div class="simpledata d-flex flex-column align-items-center">
+      <div class="imagediv mt-5"></div>
+      <h4 class="gender mt-3"></h4>
+      <p class="school"></p>
+      <button class="invite" onclick="addFriend()">送出好友邀請</button>
+    </div>
+    <div class="showprofile mt-4">
+      <div>
+        <p class="label">興趣跟專長</p>
+        <p class="interest"></p>
+      </div>
+      <div>
+        <p class="label">曾參加過的社團</p>
+        <p class="club"></p>
+      </div>
+      <div>
+        <p class="label">喜歡的課程</p>
+        <p class="course"></p>
+      </div>
+      <div>
+        <p class="label">喜歡的國家</p>
+        <p class="country"></p>
+      </div>
+      <div>
+        <p class="label">自己最近的困擾</p>
+        <p class="worry"></p>
+      </div>
+      <div>
+        <p class="label">可以交換的事情</p>
+        <p class="exchange"></p>
+      </div>
+      <div>
+        <p class="label">想嘗試的事情</p>
+        <p class="trying"></p>
+      </div>
+    </div>
+  </div>
+  <div class="ncard__unverified">
+    <img class="send" src="../static/image/message.png" alt="" />
+    <div class="unverified__card">
+      <h3 class="unverified__title me-3" style="font-weight: 500">
+        午夜開始，一段期限 24 小時的緣分。
+      </h3>
+      <div>
+        <p class="unverified_p">
+          每天午夜一到，這個頁面就會出現一位你從沒遇過的校園同學。他的興趣可能跟你幾乎一樣，對同一首歌有同樣的感動，甚至對電影裡同一個橋段一樣捶胸頓足。
+        </p>
+        <p class="unverified_p">
+          如果在
+          24小時之內，你們對彼此發出好友邀請，就會成為朋友；未能成為朋友的話，午夜一過他就會永遠消失，再也不會出現。
+        </p>
+      </div>
+      <a class="unverified_btn" href=""></a>
+    </div>
+  </div>
+</div>
+{% endblock %} {% block link %}
+<script src="../static/js/user.js"></script>
+<script src="../static/js/ncard.js"></script>
+{% endblock %}

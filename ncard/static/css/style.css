@@ -1,0 +1,123 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap");
+
+* {
+  font-family: "Noto Sans TC", sans-serif;
+}
+body {
+  background-color: rgb(0, 50, 78);
+}
+main {
+  width: 100%;
+}
+html.touch *:hover {
+  all: unset !important;
+}
+.index__card {
+  width: 728px;
+  min-height: calc(100vh - 68px);
+  height: 100%;
+  background-color: white;
+  padding: 15px 0;
+  margin-top: 70px;
+}
+.card__menu {
+  padding-top: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px 4px 0px 0px;
+}
+.menu__title {
+  width: 608px;
+}
+.title_new {
+  width: 64px;
+  height: 61px;
+  border-bottom: 2px solid rgb(51, 151, 207);
+}
+.content_div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 608px;
+  height: 157px;
+  margin: 0 auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+.women {
+  color: rgb(203, 58, 107);
+}
+.man {
+  color: rgb(36, 144, 191);
+}
+.first_img {
+  width: 84px;
+  height: 84px;
+}
+.text_div {
+  line-height: 20px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  width: 500px;
+}
+.icondiv {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.userschool {
+  font-size: 10px;
+  margin-left: 5px;
+  margin-bottom: 0;
+}
+/* img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+} */
+.index {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.member__indexcard {
+  margin: 0 auto;
+}
+.ncardintro,
+.ncardfriend {
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  height: 44px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
+  text-align: left;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+.member__tag {
+  display: none;
+}
+.visitor__tag {
+  display: none;
+  color: white;
+}
+.index__login {
+  color: rgb(255, 255, 255);
+  font-weight: 400;
+  height: 44px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  padding: 0px 16px;
+  text-align: left;
+}
+a:hover {
+  color: inherit;
+}

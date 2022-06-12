@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<link rel="stylesheet" href="../static/css/chats.css" />
+<title>信箱 | Ncard</title>
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js"
+  integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA=="
+  crossorigin="anonymous"
+></script>
+{% extends "member.html" %} {% block main %}
+<main>
+  <div class="chat__container">
+    <div class="chat__friend mt-3">
+      <div class="mail__title">最新信件</div>
+      <div class="friend__list"></div>
+    </div>
+    <div class="friend__room">
+      <div class="friend__nav"></div>
+      <div class="messages__div"></div>
+      <div class="send__message" onclick="showmessage()">
+        <p class="comment__placeholder mb-0">寫信......</p>
+      </div>
+      <div class="full__content">
+        <textarea class="sendmessage__box" id="messageText"></textarea>
+        <div
+          class="sendmsg__btnbar d-flex justify-content-end align-items-center"
+        >
+          <div class="btn d-flex align-items-center">
+            <button class="cancel me-2" onclick="hidemessage()">取消</button>
+            <button class="submit" onclick="sendMessage()">送出</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %} {% block link %}
+<script src="../static/js/user.js"></script>
+<script src="../static/js/chats.js"></script>
+
+{% endblock %}
