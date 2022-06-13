@@ -48,4 +48,4 @@ Password：test
 ### 聊天系統
 - 成為卡友的兩人即可及時送信聊天，左側的好友欄也會隨訊息更新順序
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252423-230ac23c-8b71-4de9-98dc-cbdfa05c7ef6.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173274843-4eeba093-78cd-494f-ab5b-e4d6decb4e06.png">
