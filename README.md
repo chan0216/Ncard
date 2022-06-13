@@ -16,7 +16,7 @@ Password：test
 --
 - python Flask
 - 使用 Docker 部屬
-- 使用 Google OAuth 實現第三方登入
+- 支援 Google OAuth 實現第三方登入
 - 使用 Socket.io 支援即時互動聊天室。
 - 使用 Nginx 作為 Reverse Proxy 並支援 HTTPS 的建置。
 - 使用 AWS S3儲存使用者上傳的圖片與頭貼，並利用Cloudfront建立CDN
