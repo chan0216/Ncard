@@ -46,6 +46,6 @@ Password：test
 <img  width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252389-a7f129c5-5d7b-4f0b-b910-bde66a20dcff.png">
 
 ### 聊天系統
--成為卡友的兩人即可及時送信聊天，左側的好友欄也會隨訊息更新順序
+- 成為卡友的兩人即可及時送信聊天，左側的好友欄也會隨訊息更新順序
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252423-230ac23c-8b71-4de9-98dc-cbdfa05c7ef6.png">
