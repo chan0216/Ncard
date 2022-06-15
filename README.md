@@ -8,9 +8,9 @@ Demo
 <br>
 測試帳號：
 <br>
-User：test@test.com
+帳號：test@test.com
 <br>
-Password：test
+密碼：test
 
 使用技術
 --
