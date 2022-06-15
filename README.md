@@ -6,11 +6,11 @@ Demo
 ---
 網站網址：https://ncard.website/
 <br>
-測試帳號：
+測試帳號
 <br>
-&ensp;帳號：test@test.com
+帳號：test@test.com
 <br>
-&ensp;密碼：test
+密碼：test
 
 使用技術
 --
