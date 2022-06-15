@@ -8,19 +8,19 @@ Demo
 <br>
 測試帳號：
 <br>
-帳號：test@test.com
+  帳號：test@test.com
 <br>
-密碼：test
+  密碼：test
 
 使用技術
 --
 - Python Flask
-- 使用 Docker 部屬
-- 支援 Google OAuth 實現第三方登入
+- 使用 Docker 部屬。
+- 支援 Google OAuth 實現第三方登入。
 - 使用 Socket.io 支援即時互動聊天室。
 - 使用 Nginx 作為反向代理，並支援 HTTPS 的建置。
-- 使用 AWS S3儲存使用者上傳的圖片與頭貼，並利用Cloudfront建立CDN
-- 使用 AWS RDS建構MySQL資料庫
+- 使用 AWS S3 儲存使用者上傳的圖片與頭貼，並利用 Cloudfront 建立 CDN 。
+- 使用 AWS RDS 建構 MySQL 資料庫。
 
 系統架構圖
 --
@@ -46,6 +46,6 @@ Demo
 <img  width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173252389-a7f129c5-5d7b-4f0b-b910-bde66a20dcff.png">
 
 ### 聊天系統
-- 成為卡友的兩人即可及時送信聊天，左側的好友欄也會隨訊息更新順序
+- 成為卡友的兩人即可及時送信聊天，左側的好友欄也會隨訊息更新順序。
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/173274922-75d3bf7f-dd00-4a05-874d-2e0d1b5c6223.png">
