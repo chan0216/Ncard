@@ -29,85 +29,35 @@ def token_required(f):
     return decorated
 
 
-def create_app():
-    app = Flask(__name__)
-    app.config["JSON_AS_ASCII"] = False
-    app.config['JSON_SORT_KEYS'] = False
-    app.config["TEMPLATES_AUTO_RELOAD"] = True
-    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-    app.config['MAIL_PORT'] = 465
-    app.config['MAIL_USERNAME'] = config('MAIL_USERNAME')
-    app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
-    app.config['MAIL_USE_TLS'] = False
-    app.config['MAIL_USE_SSL'] = True
-    mail = Mail(app)
-    return app
+# def create_app():
+#     app = Flask(__name__)
+#     app.config["JSON_AS_ASCII"] = False
+#     app.config['JSON_SORT_KEYS'] = False
+#     app.config["TEMPLATES_AUTO_RELOAD"] = True
+#     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+#     app.config['MAIL_PORT'] = 465
+#     app.config['MAIL_USERNAME'] = config('MAIL_USERNAME')
+#     app.config['MAIL_PASSWORD'] = config('MAIL_PASSWORD')
+#     app.config['MAIL_USE_TLS'] = False
+#     app.config['MAIL_USE_SSL'] = True
+#     mail = Mail(app)
+#     return app
 
 
-app = create_app()
+# app = create_app()
+app = Flask(__name__)
+app.config["JSON_AS_ASCII"] = False
+app.config['JSON_SORT_KEYS'] = False
+app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.register_blueprint(controller.api.user_blueprint)
-app.register_blueprint(controller.api.newpost_blueprint)
-app.register_blueprint(controller.api.verify_blueprint)
+app.register_blueprint(controller.api.newpost_blueprint, url_prefix='/api')
+app.register_blueprint(controller.api.verify_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.ncard_blueprint)
-app.register_blueprint(controller.api.cardprofile_blueprint)
-app.register_blueprint(controller.api.friend_blueprint)
+app.register_blueprint(controller.api.cardprofile_blueprint, url_prefix='/api')
+app.register_blueprint(controller.api.friend_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.chats_blueprint, url_prefix='/api')
+app.register_blueprint(controller.pages)
 socketio = SocketIO(app, cors_allowed_origins='*')
-
-
-@app.route("/")
-def index():
-    return render_template("index.html")
-
-
-@app.route("/login")
-def signin():
-    return render_template("login.html")
-
-
-@app.route("/unconfirmed")
-def unconfirmed():
-    return render_template("unconfirmed.html")
-
-
-@app.route("/confirmed")
-def confirmed():
-    return render_template("confirmed.html")
-
-
-@app.route("/verify/school")
-def verifyschool():
-    return render_template("verify.html")
-
-
-@app.route("/new-post")
-def newpost():
-    return render_template("newpost.html")
-
-
-@app.route("/member")
-def member():
-    return render_template("member.html")
-
-
-@app.route("/my/profile")
-def myprofile():
-    return render_template("cardprofile.html")
-
-
-@app.route("/ncard")
-def ncard():
-    return render_template("ncard.html")
-
-
-@app.route("/my/friends")
-def friends():
-    return render_template("friends.html")
-
-
-@app.route("/post/<id>")
-def attraction(id):
-    return render_template("post.html")
 
 
 @app.route('/chats', methods=['GET'])
@@ -121,16 +71,11 @@ def redirect_msg(current_user):
         last_ncardid = cursor.fetchone()
         if last_ncardid:
             ncardid = last_ncardid[0]
-            return redirect(url_for('chats', id=ncardid))
-        return render_template("chats.html")
+            return redirect(url_for('pages.chats', id=ncardid))
+        return redirect(url_for('pages.chats'))
     finally:
         cursor.close()
         db.close()
-
-
-@app.route("/chats/<id>")
-def chats(id):
-    return render_template("chats.html")
 
 
 @socketio.on('join_room')
@@ -156,4 +101,4 @@ def handle_send_message(data):
 
 
 if __name__ == "__main__":
-    socketio.run(app, host="0.0.0.0", port=8000, debug=False)
+    socketio.run(app, host="0.0.0.0", port=8000, debug=True)

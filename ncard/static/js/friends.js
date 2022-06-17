@@ -2,10 +2,8 @@ async function fetchFriendData() {
   const response = await fetch("/api/friend");
   const data = await response.json();
   if (data.data) {
-    console.log(data);
     let infoArr = data.data;
     for (let info of infoArr) {
-      console.log(info);
       let friendList = document.querySelector(".friend__list");
       let friendimgDiv = document.createElement("div");
       let friendImg = document.createElement("img");
@@ -23,10 +21,13 @@ async function fetchFriendData() {
       friendimgDiv.append(friendImg);
       friendDataDiv.append(friendName, friendSchool);
       friendDiv.append(friendimgDiv, friendDataDiv);
+      friendDiv.setAttribute(
+        "onclick",
+        `location.href='/friend/${info.user_id}'`
+      );
       friendList.append(friendDiv);
     }
   } else {
-    console.log("沒朋友");
     document.querySelector(".nofriend ").style.display = "flex";
   }
 }

@@ -49,6 +49,7 @@
 }
 .btninfo {
   color: rgba(0, 0, 0, 0.386);
+  cursor: pointer;
 }
 .imageDiv {
   width: 100%;

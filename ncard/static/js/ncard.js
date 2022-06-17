@@ -6,7 +6,7 @@ fetch("/api/ncard-verify")
   .then((data) => {
     if (data.error) {
       window.location.replace("/");
-    } else if (data.verify_status == "basis") {
+    } else if (data.verify_status == "basic") {
       document.querySelector(".ncard__unverified").style.display = "flex";
       let unverified_btn = document.querySelector(".unverified_btn");
       unverified_btn.style.visibility = "visible";
@@ -27,47 +27,7 @@ fetch("/api/ncard-verify")
       unverified_btn.textContent = "午夜即可抽卡";
     }
   });
-// //檢查基本資料填了沒
-// let data;
-// fetch("/api/profile")
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     //還沒填基本資料
-//     if (!data.data) {
-//       console.log("還沒填基本資料");
-//       document.querySelector(".ncard__unverified").style.display = "flex";
-//       let unverified_btn = document.querySelector(".unverified_btn");
-//       unverified_btn.style.visibility = "visible";
-//       unverified_btn.textContent = "填寫基本資料，開啟抽卡功能";
-//       unverified_btn.setAttribute("href", "/verify/school");
-//       data = false;
-//     } else {
-//       data = true;
-//     }
-//   });
-// //檢查抽卡資料填了沒
-// fetch("/api/cardprofile")
-//   .then((response) => {
-//     return response.json();
-//   })
-//   .then((data) => {
-//     if (!data.data) {
-//       console.log("hihi");
-//       document.querySelector(".ncard__unverified").style.display = "flex";
-//       let unverified_btn = document.querySelector(".unverified_btn");
-//       unverified_btn.style.visibility = "visible";
-//       unverified_btn.textContent = "填寫自我介紹";
-//       unverified_btn.setAttribute("href", "/my/profile");
-//     } else {
-//       let ncardCard = document.querySelector(".ncard__unverified ");
-//       ncardCard.style.display = "flex";
-//       let unverified_btn = document.querySelector(".unverified_btn");
-//       unverified_btn.style.visibility = "visible";
-//       unverified_btn.textContent = "等到午間即可抽卡";
-//     }
-//   });
+
 fetch("/api/ncard")
   .then((response) => {
     return response.json();
@@ -104,7 +64,7 @@ fetch("/api/ncard")
       document.querySelector(".worry").textContent = info.worry;
       document.querySelector(".exchange").textContent = info.exchange;
       document.querySelector(".trying").textContent = info.trying;
-      console.log(info.gender);
+
       if (info.gender == "F") {
         document.querySelector(".gender").textContent = "女同學";
       } else {

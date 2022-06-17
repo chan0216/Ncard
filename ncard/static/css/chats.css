@@ -20,6 +20,7 @@ body {
   flex-direction: column;
   background-color: white;
   position: relative;
+  border-radius: 4px 4px 0 0;
 }
 .friend__frame {
   cursor: pointer;
@@ -72,14 +73,16 @@ a:hover {
   color: inherit;
 }
 .send__message {
-  position: fixed;
-  bottom: 0;
+  position: absolute;
+  bottom: 48px;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   background-color: rgb(255, 255, 255);
   height: 48px;
-  width: inherit;
+  width: 100%;
   display: flex;
   align-items: center;
+  cursor: text;
+  padding-left: 30px;
 }
 .friend__nav {
   height: 60px;
@@ -91,7 +94,6 @@ a:hover {
   flex-shrink: 0;
 }
 .comment__placeholder {
-  padding-left: 40px;
   color: rgba(0, 0, 0, 0.5);
 }
 textarea {
@@ -101,7 +103,7 @@ textarea {
 }
 .sendmessage__box {
   width: 100%;
-  padding: 10px 60px 80px;
+  padding: 10px 90px 80px;
   height: 200px;
   overflow: auto;
   display: flex;
@@ -112,15 +114,15 @@ textarea {
   display: none;
   background: rgb(255, 255, 255);
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-  position: fixed;
-  bottom: 0;
-  width: inherit;
+  position: absolute;
+  bottom: 48px;
+  width: 100%;
 }
 .sendmsg__btnbar {
   width: inherit;
   background-color: white;
   height: 68px;
-  position: fixed;
+  position: absolute;
   bottom: 0;
   padding-left: 20px;
 }
@@ -162,7 +164,7 @@ textarea {
 .messages__div {
   height: 100%;
   overflow: auto;
-  margin-bottom: 100px;
+  margin-bottom: 90px;
 }
 .message__div {
   overflow: auto;
@@ -184,4 +186,17 @@ textarea {
   white-space: break-spaces;
   word-break: break-word;
   width: 500px;
+}
+.full__writebar {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  cursor: text;
+  padding: 0 40px;
+  align-items: center;
+  margin-top: 15px;
+}
+.write__friend {
+  color: rgb(143, 143, 143);
+  margin-bottom: 0;
 }

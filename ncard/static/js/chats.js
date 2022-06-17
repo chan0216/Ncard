@@ -13,7 +13,7 @@ function showmessage() {
       }
     });
 }
-
+//顯示好友列表
 fetch("/api/friends")
   .then((res) => res.json())
   .then((data) => {
@@ -55,19 +55,11 @@ const msgRoomId = location.pathname.split("/").pop();
 const chatsAPI = `/api/chats/${msgRoomId}?page=`;
 let chastPage = 0;
 let options = { threshold: 0.1 };
-// let renderNextPage = (entries) => {
-//   entries.forEach((entry) => {
-//     if (entry.isIntersecting) {
-//       renderMessages();
-//     }
-//   });
-// };
 let userId, userName, userImg, friendId, friendName, friendImg;
 async function renderMessages() {
   const res = await fetch(chatsAPI + chastPage);
   const data = await res.json();
   if (data.error) {
-    console.log(data.message);
     const msgDiv = document.querySelector(".messages__div");
     msgDiv.textContent = data.message;
     document.querySelector(".submit").disabled = true;
@@ -83,6 +75,10 @@ async function renderMessages() {
     friendId = friend.friend_id;
     friendName = friend.name;
     friendImg = friend.image;
+    //render自己送信頭像
+    document.querySelector("#avatar").src = userImg;
+    document.querySelector("#useravatar").src = userImg;
+    document.querySelector("#friendname").textContent = `寫信給${friendName}`;
     //render聊天室nav
     const friendNav = document.querySelector(".friend__nav");
     const friendInner = document.createElement("div");
@@ -132,20 +128,20 @@ async function renderMessages() {
       leftDiv.append(photoDiv, contentDiv);
       talkDiv.append(leftDiv, rightDiv);
       messagesDiv.append(talkDiv);
+      //下滑到最新的聊天訊息
+      const chatroom = document.querySelector(".messages__div");
+      chatroom.scrollTop = chatroom.scrollHeight;
     });
   }
 }
+
 renderMessages();
 socket.on("connect", function () {
   fetch("/api/chats")
     .then((res) => res.json())
     .then((data) => {
-      if (data.data == null) {
-        console.log("null");
-        document.querySelector(".messages__div").textContent =
-          "你還沒有聊天室喔";
-        document.querySelector(".submit").disabled = true;
-        return;
+      if (data.error) {
+        window.location.replace("/");
       }
       if (data.data) {
         data.data.forEach((roomId) => {
@@ -164,6 +160,7 @@ function sendMessage() {
     room: msgRoomId,
     message: messageText.value,
   });
+
   hidemessage();
 }
 socket.on("receive_message", (data) => {
@@ -205,6 +202,10 @@ function receiveMessage(data) {
   leftDiv.append(photoDiv, contentDiv);
   talkDiv.append(leftDiv, rightDiv);
   messagesDiv.append(talkDiv);
+  document.querySelector("#messageText").value = "";
+  //新聊天訊息滑到最下面
+  const chatroom = document.querySelector(".messages__div");
+  chatroom.scrollTop = chatroom.scrollHeight;
 }
 function updatefriend(data) {
   const updatemsg = document.querySelector(`a[href='/chats/${data.room}']`);

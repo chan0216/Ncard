@@ -42,7 +42,7 @@ def get_room(current_user):
                 roomlist.append(room_id)
             return {"data": roomlist}
         else:
-            return {"data":None}
+            return {"data": None}
     finally:
         cursor.close()
         db.close()

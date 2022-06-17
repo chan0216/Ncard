@@ -46,11 +46,8 @@ function checkLoginState() {
 }
 function statusChangeCallback(response) {
   // Called with the results from FB.getLoginStatus().
-  // console.log("statusChangeCallback");
-  // console.log(response); // The current login status of the person.
   if (response.status === "connected") {
     // Logged into your webpage and Facebook.
-    console.log("你已經登入囉");
     getFBUserData();
   } else {
     // Not logged into your webpage or we are unable to tell.
@@ -65,9 +62,8 @@ function loginFB() {
 function getFBUserData() {
   FB.api("/me", { fields: "id,email" }, function (user) {
     if (user["error"]) {
-      console.log("error");
+      // console.log("error");
     } else {
-      console.log(user.id, user.email);
       const signinFbData = {
         email: user.email,
         userid: user.id,

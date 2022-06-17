@@ -1,11 +1,7 @@
-from flask import *
-import model.verify
 from decouple import config
 import jwt
 from functools import wraps
-
-
-verify_blueprint = Blueprint('verify', __name__)
+from flask import request,make_response,jsonify
 
 
 def token_required(f):
@@ -26,25 +22,3 @@ def token_required(f):
             return res
         return f(current_user)
     return decorated
-
-
-@verify_blueprint.route("/verify", methods=["POST"])
-@token_required
-def add_profile(current_user):
-    try:
-        data = request. json
-        resp = model.verify.add_profile(
-            current_user, data)
-        return resp
-    except Exception as e:
-        return {"error": True}, 500
-
-
-@verify_blueprint.route("/verify", methods=["GET"])
-@token_required
-def get_profile(current_user):
-    try:
-        resp = model.verify.get_profile(current_user)
-        return resp
-    except Exception as e:
-        return {"error": True}, 500

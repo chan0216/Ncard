@@ -18,9 +18,18 @@
       <div class="friend__nav"></div>
       <div class="messages__div"></div>
       <div class="send__message" onclick="showmessage()">
+        <div class="photo__div">
+          <img id="avatar" class="profile__photo" alt="" />
+        </div>
         <p class="comment__placeholder mb-0">寫信......</p>
       </div>
       <div class="full__content">
+        <div class="full__writebar">
+          <div class="photo__div">
+            <img id="useravatar" class="profile__photo" alt="" />
+          </div>
+          <p class="write__friend" id="friendname"></p>
+        </div>
         <textarea class="sendmessage__box" id="messageText"></textarea>
         <div
           class="sendmsg__btnbar d-flex justify-content-end align-items-center"

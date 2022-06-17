@@ -9,7 +9,6 @@ fetch("/api/user")
     } else {
       document.querySelector(".nav-stranger").style.display = "block";
       document.querySelector(".nav-user").style.display = "none";
-      // window.location.replace("/");
     }
   });
 function deleteUser() {
