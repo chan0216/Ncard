@@ -18,7 +18,9 @@ const post = async () => {
   const result = await fetch(`/api/${url.pathname}`);
   const data = await result.json();
   const post = data.data;
-
+  if (data.error) {
+    document.querySelector(".submit").disabled = true;
+  }
   if (post) {
     let schoolText = document.createElement("p");
     schoolText.textContent = post.school;
@@ -55,7 +57,6 @@ const postComment = async () => {
   let contenteditable = document.querySelector("[contenteditable]");
   let commentText = contenteditable.innerHTML;
   if (commentText === "") {
-    console.log("沒填寫內容");
     return false;
   }
   const comment = {
@@ -85,6 +86,7 @@ const getComment = async () => {
   const result = await fetch(`/api/comment/${url.pathname.split("/")[2]}`);
   const data = await result.json();
   const res = data.data;
+
   if (res) {
     let commentCard = document.createElement("div");
     commentCard.classList.add("comment_card");

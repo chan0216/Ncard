@@ -16,6 +16,7 @@ fetch("/api/verify")
       userformAlert.textContent = "你已經填過基本資料了喔！";
     }
   });
+//提交基本資料
 async function submitProfile() {
   let realname = document.querySelector("#realname").value;
   let gender = document.querySelector("#gender").value;

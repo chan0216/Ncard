@@ -4,7 +4,7 @@ html {
 }
 
 header {
-  background-color: #d8dde0;
+  background-color: #46565f;
 }
 nav {
   max-width: 1280px;
@@ -17,7 +17,7 @@ nav {
 .bi-person-fill,
 .nav-link,
 .navbar-brand {
-  color: rgb(26, 25, 25);
+  color: white;
 }
 
 .bi-wallet2 {
@@ -27,7 +27,7 @@ nav {
 
 .nav-link:hover,
 .navbar-brand:hover {
-  color: black;
+  color: white;
 }
 .nav-user {
   visibility: hidden;
@@ -41,5 +41,5 @@ nav {
 nav-link:hover,
 navbar-brand:hover {
   text-decoration: none;
-  color: black;
+  color: white;
 }

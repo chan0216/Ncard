@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="../static/css/nochat.css" />
+<title>信箱 | Ncard</title>
+{% extends "chats.html" %} {% block main %}
+<main class="d-flex justify-content-center align-items-center">
+  <div class="nochat__container">
+    <img src="../static/image/crying.png" class="crying" alt="" />
+    <div class="text__div">
+      <p>尚無配對成功的好友可以書信往來</p>
+      <p style="color: rgba(0, 0, 0, 0.5)">
+        還沒認識到新朋友嗎？如果你的自我介紹夠精彩，相信可以與你談天說地的知心朋友就在午夜等著你！
+      </p>
+      <button class="submit me-2" onclick="location.href='/my/profile'">
+        豐富自我介紹
+      </button>
+    </div>
+  </div>
+</main>
+{% endblock %}

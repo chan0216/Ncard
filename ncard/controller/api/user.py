@@ -206,22 +206,24 @@ def signin():
                         jsonify({"error": True, "message": "登入失敗,請重新嘗試"}), 400)
                     return res
 
-    # except:
-    #     db.rollback()
-    #     # res = make_response(
-    #     #     jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
-    #     # return res
+    except:
+        db.rollback()
+        res = make_response(
+            jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
+        return res
     finally:
         db.commit()
         db.close()
+
+# verify
 
 
 @user_blueprint.route("/api/user", methods=["GET"])
 def get_user():
     token = request.cookies.get('token')
     if token is not None:
-        userdata = jwt.decode(token.encode('UTF-8'),
-                              config("secret_key"), algorithms=["HS256"])
+        user_data = jwt.decode(token.encode('UTF-8'),
+                               config("secret_key"), algorithms=["HS256"])
         # print(userdata)
         return {"ok": True}
     else:
@@ -269,6 +271,5 @@ def get_user():
 @user_blueprint.route("/api/user", methods=["DELETE"])
 def delete_user():
     res = make_response(jsonify({"ok": True}), 200)
-    # res.delete_cookie("token")
     res.set_cookie('token', expires=0)
     return res

@@ -183,7 +183,7 @@ def ncard_verify(current_user):
         profile_user = cursor.fetchone()
 
         if ncard_user is None and profile_user is None:
-            return {"verify_status": "basis"}
+            return {"verify_status": "basic"}
         elif profile_user != None and ncard_user == None:
             return {"verify_status": "profile"}
         elif profile_user != None and ncard_user != None and len(match_list) == 0:

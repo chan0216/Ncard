@@ -8,7 +8,7 @@ fetch("/api/ncard-verify")
       document.querySelector(".ncard__card").style.display = "block";
     } else if (data.verify_status == "profile") {
       document.querySelector(".ncard__card").style.display = "block";
-    } else {
+    } else if (data.verify_status == "basic") {
       let noprofile = document.querySelector(".noprofile");
       noprofile.style.display = "block";
     }
@@ -36,7 +36,6 @@ fetch("/api/cardprofile")
       document.querySelector(".exchange").value = info.exchange;
       document.querySelector(".trying").value = info.trying;
     } else {
-      console.log("還沒填寫自我介紹");
       let welTitle = document.querySelector(".wel_title");
       welTitle.textContent = "只要回答三個問題，並新增照片就可以開啟抽卡功能";
     }
@@ -78,7 +77,6 @@ const postNcard = async () => {
   let trying = document.querySelector(".trying").value;
   let NcardArr = [interest, club, course, country, worry, exchange, trying];
   if (NcardArr.filter((q) => !q).length > 4) {
-    console.log("少填");
     warning.textContent = "請至少回答三個問題";
     return;
   }

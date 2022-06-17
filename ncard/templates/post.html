@@ -3,61 +3,64 @@
 <link rel="stylesheet" href="../static/css/post.css" />
 <title>Ncard</title>
 {% endblock %} {% block main %}
-<div class="post__container mt-5">
-  <div class="post__card">
-    <div class="post__originator">
-      <div class="originator"></div>
-      <p class="post__time"></p>
+<main>
+  <div class="post__container mt-5">
+    <div class="post__card">
+      <div class="post__originator">
+        <div class="originator"></div>
+        <p class="post__time"></p>
+      </div>
     </div>
-  </div>
-  <div class="comment__container"></div>
-  <div
-    class="post__comment d-flex align-items-center justify-content-between"
-    onclick="showmessage()"
-  >
-    <p class="comment__placeholder">留言......</p>
-    <p class="comment_warning"></p>
-  </div>
-  <div class="full__comment">
-    <div class="user__info">
-      <div class="d-flex">
-        <div class="user__gender"></div>
-        <div class="d-flex flex-column">
-          <p class="post__school"></p>
-          <p class="user__time"></p>
+
+    <div class="comment__container"></div>
+    <div
+      class="post__comment d-flex align-items-center justify-content-between"
+      onclick="showmessage()"
+    >
+      <p class="comment__placeholder">留言......</p>
+      <p class="comment_warning"></p>
+    </div>
+    <div class="full__comment">
+      <div class="user__info">
+        <div class="d-flex">
+          <div class="user__gender"></div>
+          <div class="d-flex flex-column">
+            <p class="post__school"></p>
+            <p class="user__time"></p>
+          </div>
+        </div>
+        <i class="bi bi-arrows-angle-expand" onclick="hidemessage()"></i>
+      </div>
+
+      <div
+        class="comment__box"
+        contenteditable="true"
+        placeholder="內容......"
+      ></div>
+      <div
+        class="newpost__btnbar d-flex justify-content-between align-items-center"
+      >
+        <label class="btninfo">
+          <input
+            id="upload_img"
+            style="display: none"
+            accept="image/png, image/jpeg"
+            type="file"
+          />
+          <i class="bi bi-image-fill" style="font-size: 24px"></i>
+        </label>
+        <div class="btn d-flex align-items-center">
+          <button class="cancel me-2" onclick="hidemessage()">取消</button>
+          <button class="submit" onclick="postComment()">送出</button>
         </div>
       </div>
-      <i class="bi bi-arrows-angle-expand" onclick="hidemessage()"></i>
+
+      <!-- </div> -->
+
+      {% endblock %} {% block link %}
+      <script src="../static/js/user.js"></script>
+      <script src="../static/js/post.js"></script>
+      {% endblock %}
     </div>
-
-    <div
-      class="comment__box"
-      contenteditable="true"
-      placeholder="內容......"
-    ></div>
-    <div
-      class="newpost__btnbar d-flex justify-content-between align-items-center"
-    >
-      <label class="btninfo">
-        <input
-          id="upload_img"
-          style="display: none"
-          accept="image/png, image/jpeg"
-          type="file"
-        />
-        <i class="bi bi-image-fill" style="font-size: 24px"></i>
-      </label>
-      <div class="btn d-flex align-items-center">
-        <button class="cancel me-2" onclick="hidemessage()">取消</button>
-        <button class="submit" onclick="postComment()">送出</button>
-      </div>
-    </div>
-
-    <!-- </div> -->
-
-    {% endblock %} {% block link %}
-    <script src="../static/js/user.js"></script>
-    <script src="../static/js/post.js"></script>
-    {% endblock %}
   </div>
-</div>
+</main>

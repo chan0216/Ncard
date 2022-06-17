@@ -4,7 +4,6 @@ async function newPost() {
   let postTitle = document.querySelector(".newpost__title").value;
   if (postText == "" || postTitle == "") {
     document.querySelector(".warning").textContent = "請輸入完整";
-    console.log("有空格沒填");
     return;
   }
 
@@ -44,15 +43,6 @@ async function newPost() {
     window.location.replace("/");
   }
 }
-
-// console.log(postTitle, postText);
-// contenteditable.innerHTML = postText;
-//文章列表顯示
-//   const text = postText
-//   .replace(/<div>/g, "\n")
-//   .replace(/<\/div>/g, "")
-//   .replace(/<br>/g, "\n");
-//   contenteditable.innerHTML = text;
 
 document.querySelector("#upload_img").addEventListener("change", (event) => {
   let file = event.target.files[0];

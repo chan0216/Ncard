@@ -29,7 +29,6 @@ async function signin(e) {
     // window.location.replace("/unconfirmed");
     window.location.replace("/");
   } else {
-    console.log(data.message);
     document.querySelector(".error_text").textContent = data.message;
   }
 }
