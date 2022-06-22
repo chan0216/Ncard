@@ -1,7 +1,7 @@
 from model.db import con_pool
 
 
-def get_cardprofile(current_user):
+def get_profile(current_user):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
@@ -19,7 +19,7 @@ def get_cardprofile(current_user):
         db.close()
 
 
-def post_cardprofile(current_user, data):
+def post_profile(current_user, data):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)

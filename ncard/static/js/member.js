@@ -1,4 +1,4 @@
-fetch("/api/verify")
+fetch("/api/validation")
   .then((response) => {
     return response.json();
   })

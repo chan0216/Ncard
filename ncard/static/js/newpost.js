@@ -65,7 +65,7 @@ document.querySelector("#upload_img").addEventListener("change", (event) => {
       newpost__content.append(imageDiv);
     });
 });
-fetch("/api/verify")
+fetch("/api/validation")
   .then((response) => {
     return response.json();
   })

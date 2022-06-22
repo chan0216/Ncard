@@ -1,6 +1,6 @@
 const userformSubmit = document.querySelector(".userform__submit");
 const userformAlert = document.querySelector(".userform__alert");
-fetch("/api/verify")
+fetch("/api/validation")
   .then((response) => {
     return response.json();
   })
@@ -38,7 +38,7 @@ async function submitProfile() {
     },
     body: JSON.stringify(profile),
   };
-  const response = await fetch("/api/verify", config);
+  const response = await fetch("/api/validation", config);
   const data = await response.json();
   if (data.ok) {
     document.querySelector(".userform__popup ").style.display = "block";

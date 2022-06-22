@@ -1,25 +1,11 @@
 <!DOCTYPE html>
 {% extends "index.html" %} {% block title %}
 <script src="https://accounts.google.com/gsi/client" async defer></script>
-<!-- <link rel="stylesheet" href="../static/style.css" /> -->
 <link rel="stylesheet" href="../static/css/signin.css" />
 <title>註冊</title>{% endblock %}{% block nav %} {% endblock %} {% block main %}
 <main>
   <div class="container d-flex align-items-center">
     <div class="card">
-      <!-- <div class="fb_signin">
-        <div id="fb-root"></div>
-        <div
-          class="fb-login-button"
-          data-width="403"
-          data-size="large"
-          data-button-type="continue_with"
-          data-layout="default"
-          data-auto-logout-link="false"
-          data-use-continue-as="false"
-          onlogin="checkLoginState()"
-        ></div>
-      </div> -->
       <div
         id="g_id_onload"
         data-client_id="312350990373-e5rs7t2t9oomvbdrckop2sto4ijbpea3.apps.googleusercontent.com"
@@ -40,7 +26,7 @@
         data-width="403"
       ></div>
       <hr />
-      <form class="login">
+      <form class="card__login" id="loginForm">
         <span>常用信箱</span>
         <input
           placeholder="輸入信箱"
@@ -55,11 +41,11 @@
           value="test"
           placeholder="輸入密碼"
         />
-        <p class="error_text"></p>
+        <p class="error__text"></p>
         <input
           type="submit"
           value="註冊 / 登入"
-          class="btn mt-4"
+          class="login__btn mt-4"
           id="signinBtn"
         />
       </form>
@@ -67,14 +53,7 @@
   </div>
 </main>
 {% block link %}{%endblock %}
-<script src="../static/js/social-login.js"></script>
 <script src="../static/js/signup.js"></script>
-<script
-  async
-  defer
-  crossorigin="anonymous"
-  src="https://connect.facebook.net/zh_TW/sdk.js#xfbml=1&version=v13.0&appId=955010961871784&autoLogAppEvents=1"
-  nonce="ZVVZgpav"
-></script>
+<script src="../static/js/social-login.js"></script>
 
 {%endblock %}

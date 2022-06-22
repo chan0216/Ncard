@@ -1,11 +1,9 @@
-from email import message
 from flask import *
 from functools import wraps
 from decouple import config
-from model.db import con_pool
 import model.cardprofile
 import jwt
-cardprofile_blueprint = Blueprint('cardprofile', __name__)
+profile_blueprint = Blueprint('profile', __name__)
 
 
 def token_required(f):
@@ -29,23 +27,23 @@ def token_required(f):
     return decorated
 
 
-@cardprofile_blueprint.route("/cardprofile", methods=["GET"])
+@profile_blueprint.route("/profile", methods=["GET"])
 @token_required
-def get_cardprofile(current_user):
+def get_profile(current_user):
     try:
-        resp = model.cardprofile.get_cardprofile(
+        resp = model.cardprofile.get_profile(
             current_user)
         return resp
     except Exception as e:
         return {"error": True}, 500
 
 
-@cardprofile_blueprint.route("/cardprofile", methods=["POST"])
+@profile_blueprint.route("/profile", methods=["POST"])
 @token_required
-def post_cardprofile(current_user):
+def post_profile(current_user):
     try:
         data = request. json
-        resp = model.cardprofile.post_cardprofile(current_user, data)
+        resp = model.cardprofile.post_profile(current_user, data)
         return resp
     except Exception as e:
         return {"error": True}, 500

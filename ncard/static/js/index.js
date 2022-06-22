@@ -59,12 +59,6 @@ fetch("/api/newpost")
       } else {
         icon.classList.add("man");
       }
-
-      // // let hr = document.createElement("hr");
-
-      // let text = document.createElement("p");
-      // text.textContent = obj["title"];
-      // // img.src = obj["imgurl"];
     }
   });
 function selectid(checkid) {

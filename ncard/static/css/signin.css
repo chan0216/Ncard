@@ -18,24 +18,24 @@ body {
   margin: 0 auto;
   border: 0;
 }
-.login {
+.card__login {
   display: flex;
   flex-direction: column;
 }
-.login * {
+.card__login * {
   border-radius: 10px;
 }
-.btn {
+.login__btn {
   color: white;
   background-color: #3397cf;
 }
 
-.btn:focus {
+.login__btn:focus {
   outline: none;
   box-shadow: none;
   color: white;
 }
-.btn:hover {
+.login__btn:hover {
   color: white;
 }
 input {
@@ -44,9 +44,6 @@ input {
   outline: none;
   padding: 10px;
 }
-.fb_signin {
-  margin-bottom: 20px;
-}
-.error_text {
+.error__text {
   color: rgb(232, 82, 82);
 }
