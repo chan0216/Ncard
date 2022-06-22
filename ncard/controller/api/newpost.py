@@ -31,7 +31,7 @@ def token_required(f):
 
 
 @newpost_blueprint.route("/image", methods=["POST"])
-def postimage():
+def post_image():
     file = request.files['file']
     filename = file.filename
     s3.Bucket("myawscloudfiles").put_object(

@@ -1,20 +1,18 @@
+const fullContent = document.querySelector(".full__content");
 const socket = io();
-function hidemessage() {
-  document.querySelector(".full__content").style.display = "none";
+function hideMessage() {
+  fullContent.style.display = "none";
 }
-function showmessage() {
-  fetch("/api/verify")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      if (data.data) {
-        document.querySelector(".full__content").style.display = "block";
-      }
-    });
+
+async function showMessage() {
+  const response = await fetch("/api/validation");
+  const data = await response.json();
+  if (data.data) {
+    fullContent.style.display = "block";
+  }
 }
 //顯示好友列表
-fetch("/api/friends")
+fetch("/api/messages")
   .then((res) => res.json())
   .then((data) => {
     let res = data.data;
@@ -52,7 +50,7 @@ function renderFriends(friend) {
 }
 //得到聊天訊息
 const msgRoomId = location.pathname.split("/").pop();
-const chatsAPI = `/api/chats/${msgRoomId}?page=`;
+const chatsAPI = `/api/message/${msgRoomId}?page=`;
 let chastPage = 0;
 let options = { threshold: 0.1 };
 let userId, userName, userImg, friendId, friendName, friendImg;
@@ -135,9 +133,8 @@ async function renderMessages() {
   }
 }
 
-renderMessages();
 socket.on("connect", function () {
-  fetch("/api/chats")
+  fetch("/api/message")
     .then((res) => res.json())
     .then((data) => {
       if (data.error) {
@@ -161,7 +158,7 @@ function sendMessage() {
     message: messageText.value,
   });
 
-  hidemessage();
+  hideMessage();
 }
 socket.on("receive_message", (data) => {
   if (data.room == msgRoomId) {
@@ -213,3 +210,4 @@ function updatefriend(data) {
   updateText.textContent = data.message;
   document.querySelector(".friend__list").prepend(updatemsg);
 }
+renderMessages();

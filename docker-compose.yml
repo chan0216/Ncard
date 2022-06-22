@@ -1,6 +1,15 @@
 version: "3.3"
 
 services:
+  taipei_one_day:
+    image: chan0216/taipei_oneday
+    env_file:
+      - ../taipei_oneday/.env
+    environment:
+      - TZ=Asia/Taipei
+    ports:
+      - "3000:3000"
+    command: python app.py
   ncard:
     image: chan0216/ncard
     env_file:
@@ -9,15 +18,18 @@ services:
       - TZ=Asia/Taipei
     ports:
       - "8000:8000"
-    command: python app.py
+    command: gunicorn --worker-class eventlet -w 1 -b :8000 wsgi:app
 
   nginx:
     image: chan0216/nginx
     volumes:
       - ./certificate.crt:/etc/ssl/certificate.crt
       - ./private.key:/etc/ssl/private.key
+      - ../taipei_oneday/certificate.crt:/etc/ssl/taipei_oneday/certificate.crt
+      - ../taipei_oneday/private.key:/etc/ssl/taipei_oneday/private.key
     ports:
       - "80:80"
       - "443:443"
     depends_on:
       - ncard
+      - taipei_one_day

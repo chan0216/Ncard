@@ -28,7 +28,7 @@ def token_required(f):
     return decorated
 
 
-@verify_blueprint.route("/verify", methods=["POST"])
+@verify_blueprint.route("/validation", methods=["POST"])
 @token_required
 def add_profile(current_user):
     try:
@@ -40,7 +40,7 @@ def add_profile(current_user):
         return {"error": True}, 500
 
 
-@verify_blueprint.route("/verify", methods=["GET"])
+@verify_blueprint.route("/validation", methods=["GET"])
 @token_required
 def get_profile(current_user):
     try:

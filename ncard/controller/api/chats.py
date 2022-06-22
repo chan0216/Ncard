@@ -26,7 +26,7 @@ def token_required(f):
     return decorated
 
 
-@chats_blueprint.route('/chats', methods=['GET'])
+@chats_blueprint.route('/message', methods=['GET'])
 @token_required
 def get_room(current_user):
 
@@ -48,7 +48,7 @@ def get_room(current_user):
         db.close()
 
 
-@chats_blueprint.route('/friends', methods=['GET'])
+@chats_blueprint.route('/messages', methods=['GET'])
 @token_required
 def get_friends(current_user):
     try:
@@ -86,7 +86,7 @@ def get_friends(current_user):
         db.close()
 
 
-@chats_blueprint.route('/chats/<int:id>', methods=['GET'])
+@chats_blueprint.route('/message/<int:id>', methods=['GET'])
 def get_chats(id):
     try:
         page = int(request.args.get('page'))

@@ -1,32 +1,30 @@
 let nooncard;
-fetch("/api/ncard-verify")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    if (data.error) {
-      window.location.replace("/");
-    } else if (data.verify_status == "basic") {
-      document.querySelector(".ncard__unverified").style.display = "flex";
-      let unverified_btn = document.querySelector(".unverified_btn");
-      unverified_btn.style.visibility = "visible";
-      unverified_btn.textContent = "填寫基本資料";
-      unverified_btn.setAttribute("href", "/verify/school");
-    } else if (data.verify_status == "profile") {
-      document.querySelector(".ncard__unverified").style.display = "flex";
-      let unverified_btn = document.querySelector(".unverified_btn");
-      unverified_btn.style.visibility = "visible";
-      unverified_btn.textContent = "填寫自我介紹";
-      unverified_btn.setAttribute("href", "/my/profile");
-    } else if (data.message == "還未配對") {
-      document.querySelector(".ncard__card").style.display = "none";
-      document.querySelector(".ncard__unverified").style.display = "flex";
-      let unverified_btn = document.querySelector(".unverified_btn");
-      unverified_btn.style.visibility = "visible";
-      unverified_btn.setAttribute("onclick", "return false;");
-      unverified_btn.textContent = "午夜即可抽卡";
-    }
-  });
+async function checkStatus() {
+  const response = await fetch("/api/status");
+  const data = await response.json();
+  if (data.error) {
+    window.location.replace("/");
+  } else if (data.verify_status == "basic") {
+    document.querySelector(".ncard__unverified").style.display = "flex";
+    let unverified_btn = document.querySelector(".unverified_btn");
+    unverified_btn.style.visibility = "visible";
+    unverified_btn.textContent = "填寫基本資料";
+    unverified_btn.setAttribute("href", "/verify/school");
+  } else if (data.verify_status == "profile") {
+    document.querySelector(".ncard__unverified").style.display = "flex";
+    let unverified_btn = document.querySelector(".unverified_btn");
+    unverified_btn.style.visibility = "visible";
+    unverified_btn.textContent = "填寫自我介紹";
+    unverified_btn.setAttribute("href", "/my/profile");
+  } else if (data.message) {
+    document.querySelector(".ncard__card").style.display = "none";
+    document.querySelector(".ncard__unverified").style.display = "flex";
+    let unverified_btn = document.querySelector(".unverified_btn");
+    unverified_btn.style.visibility = "visible";
+    unverified_btn.setAttribute("onclick", "return false;");
+    unverified_btn.textContent = "午夜即可抽卡";
+  }
+}
 
 fetch("/api/ncard")
   .then((response) => {
@@ -96,3 +94,4 @@ async function addFriend() {
     invite.style.opacity = "0.2";
   }
 }
+checkStatus();
