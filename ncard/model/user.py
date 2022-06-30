@@ -19,14 +19,13 @@ def check_user(username):
         db.close()
 
 
-def create_user(username, hashed_password):
+def create_user(username, password):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
-        sql = "Insert Into user(username,password) Values( %s,%s)"
-        val = (username, hashed_password)
+        sql = "Insert Into user(username,password) Values(%s,%s)"
+        val = (username, password)
         cursor.execute(sql, val)
-        db.commit()
         cursor.execute(
             "SELECT  `user_id` from user WHERE username = %s", (username,))
         user_id = cursor.fetchone()

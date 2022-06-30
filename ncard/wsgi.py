@@ -1,4 +1,3 @@
-from re import DEBUG
 from app import socketio, app
 
 if __name__ == "__main__":

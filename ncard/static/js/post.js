@@ -178,7 +178,7 @@ document.querySelector("#upload_img").addEventListener("change", (event) => {
     });
 });
 function showmessage() {
-  fetch("/api/verify")
+  fetch("/api/validation")
     .then((response) => {
       return response.json();
     })
