@@ -40,13 +40,13 @@ Password：test
 ## Introduction
 
 
-### Browse articles
+### Browse Articles
 
 - Homepage showing the latest articles.
 
   ![](ncard/static/image/ncard_homepage.png)
 
-### Share ideas
+### Share Ideas
 
 - After registration and filling out basic information, users can write an article and post comments.
 
