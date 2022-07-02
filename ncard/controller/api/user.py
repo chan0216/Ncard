@@ -26,13 +26,11 @@ def user_signin():
             return {"Error": True, "message": "Could not verify audience"}, 403
         else:
             username = id_info["sub"]
-            hashed_password = None
+
     # 原生系統登入
     else:
         username = data['email']
         password = data['password']
-        # hashed_password = bcrypt.generate_password_hash(
-        #     password=password).decode('utf-8')
 
     try:
         resp = model.user.check_user(
