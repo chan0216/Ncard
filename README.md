@@ -4,8 +4,6 @@ Dcard as a reference, users can post comments, share ideas, meet new friends, ma
 
 ## Demo
 
----
-
 Website URL : https://ncard.website/
 
 Test Account
@@ -15,8 +13,6 @@ Email：test@test.com
 Password：test
 
 ## Technique
-
----
 
 ### Frontend
 
@@ -38,13 +34,11 @@ Password：test
 
 ## System Architecture
 
----
 
 ![](./ncard/static/image/Diagram.jpg)
 
 ## Introduction
 
----
 
 ### Browse articles
 
