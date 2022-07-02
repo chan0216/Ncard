@@ -65,6 +65,7 @@ Password：test
 ### Chat
 
 - After users become friends, they can start a conversation and exchange information.
+
 ![ncard_chat_](https://user-images.githubusercontent.com/94737861/176986984-711ef07f-30b9-42f9-b11f-d1031a8d1cdb.gif)
 
 
