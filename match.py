@@ -33,7 +33,7 @@ def matchuser():
         for user in all_users:
             user_list.append(user[0])
             match_list.append(json. loads(user[1]))
-        print(user_list, match_list)
+        # print(user_list, match_list)
         user_count = len(user_list)
         if (user_count % 2) != 0:
             del user_list[0]
@@ -51,7 +51,7 @@ def matchuser():
                 pair_user2 = user_list[match_index]
             user_list.remove(pair_user2)
             match_list.remove(match_list[match_index])
-            print(user_id, pair_user2)
+            # print(user_id, pair_user2)
             cursor.execute(
                 "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (user_id, pair_user2))
             cursor.execute(

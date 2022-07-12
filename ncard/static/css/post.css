@@ -1,4 +1,10 @@
 @import "style.css";
+body {
+  margin-top: 0;
+}
+main {
+  overflow: auto;
+}
 .post__container {
   width: 728px;
   min-height: calc(100vh - 40px);
@@ -13,11 +19,10 @@
   flex-direction: column;
   padding: 0px 60px;
   padding-bottom: 130px;
-  margin-top: 70px;
 }
 .post__originator {
   width: 100%;
-  padding: 12px 0;
+  padding: 30px 0 5px;
 }
 .originator {
   display: flex;
@@ -42,6 +47,7 @@ p {
 .post__time {
   color: rgba(0, 0, 0, 0.35);
   font-size: 14px;
+  margin: 10px 0 20px;
 }
 .post_title {
   font-weight: 500;
@@ -74,10 +80,11 @@ textarea {
 .comment_card {
   width: 728px;
   min-height: 200px;
-  background: rgb(245, 245, 245);
+  /* background: rgb(245, 245, 245); */
   margin: 0 auto;
   padding: 30px 40px 40px;
 }
+
 .title_div {
   font-weight: 400;
   line-height: 22px;
@@ -87,7 +94,7 @@ textarea {
 }
 .comment_div {
   padding-top: 20px;
-  padding-bottom: 30px;
+  padding-bottom: 20px;
   display: flex;
   word-break: break-word;
   border-bottom: 1px solid rgb(233, 233, 233);
@@ -114,14 +121,13 @@ img {
   color: rgba(0, 0, 0, 0.5);
 }
 .post__comment {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.15);
   background-color: rgb(255, 255, 255);
   height: 48px;
   width: 728px;
   cursor: text;
-  border-radius: 0 0 10px 10px;
 }
 .comment__container {
   border-radius: 0 0 10px 10px;
@@ -130,7 +136,7 @@ img {
   display: none;
   background: rgb(255, 255, 255);
   border-top: 1px solid rgba(0, 0, 0, 0.15);
-  position: absolute;
+  position: fixed;
   bottom: 0;
   width: 728px;
 }
@@ -185,4 +191,26 @@ img {
 }
 .comment_warning {
   padding-right: 10px;
+}
+.like__bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  margin: 0 50px;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 16px;
+}
+.comment__nums {
+  display: flex;
+  align-items: center;
+}
+.bi-heart-fill.active {
+  color: red;
+}
+.like,
+.comment {
+  padding: 0 8px;
 }

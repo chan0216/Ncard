@@ -89,15 +89,13 @@
         </div>
         <div class="index__card rounded-3 mt-3">
           <div class="card__menu d-flex justify-content-center">
-            <div class="menu__title">
-              <div
-                class="title_new d-flex justify-content-center align-items-center"
-              >
-                最新
-              </div>
+            <div class="menu__title d-flex align-items-center">
+              <a class="title" onclick="getNewpost()" id="newTitle">最新</a>
+              <a class="title" onclick="getHotpost()" id="hotTitle">熱門</a>
             </div>
           </div>
           <div></div>
+          <div class="index__articles"></div>
         </div>
       </div>
     </main>

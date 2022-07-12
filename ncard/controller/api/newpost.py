@@ -66,10 +66,42 @@ def get_newpost():
         return {"error": True}, 500
 
 
+@newpost_blueprint.route("/articles", methods=["GET"])
+def get_hot_articles():
+    try:
+        resp = model.newpost.get_hot_articles()
+        return resp
+    except Exception as e:
+        return {"error": True}, 500
+
+
 @newpost_blueprint.route("/post/<id>", methods=["GET"])
 def get_article(id):
     try:
-        resp = model.newpost.get_article(id)
+        current_user = None
+        token = request.cookies.get('token')
+        if token:
+            jwt_data = jwt.decode(token.encode('UTF-8'),
+                                  config("secret_key"), algorithms=["HS256"])
+            current_user = jwt_data["user_id"]
+        resp = model.newpost.get_article(id, current_user)
+        return resp
+    except Exception as e:
+        return {"error": True}, 500
+
+
+@newpost_blueprint.route("/post/<int:post_id>/like", methods=["PATCH"])
+def patch_like(post_id):
+    token = request.cookies.get('token')
+    if not token:
+        res = make_response(
+            jsonify({"error": True, "message": "未登入系統，拒絕存取"}), 403)
+        return res
+    try:
+        jwt_data = jwt.decode(token.encode('UTF-8'),
+                              config("secret_key"), algorithms=["HS256"])
+        current_user = jwt_data["user_id"]
+        resp = model.newpost.patch_post_like(post_id, current_user)
         return resp
     except Exception as e:
         return {"error": True}, 500

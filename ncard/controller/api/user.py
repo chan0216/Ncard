@@ -26,13 +26,11 @@ def user_signin():
             return {"Error": True, "message": "Could not verify audience"}, 403
         else:
             username = id_info["sub"]
-            hashed_password = None
+
     # 原生系統登入
     else:
         username = data['email']
         password = data['password']
-        hashed_password = bcrypt.generate_password_hash(
-            password=password).decode('utf-8')
 
     try:
         resp = model.user.check_user(
@@ -43,9 +41,7 @@ def user_signin():
                 "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=300)
             }
             if resp["password"]:
-                check_password = bcrypt.check_password_hash(
-                    resp["password"], password)
-                if not check_password:
+                if resp["password"] != password:
                     res = make_response(
                         jsonify({"error": True, "message": "登入失敗,請重新嘗試"}), 400)
                     return res
@@ -56,8 +52,9 @@ def user_signin():
             res.set_cookie('token', token, expires=datetime.datetime.utcnow(
             ) + datetime.timedelta(minutes=300))
             return res
+
         else:
-            resp = model.user.create_user(username, hashed_password)
+            resp = model.user.create_user(username, password)
             payload = {
                 "user_id":  resp["user_id"],
                 "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=300)
