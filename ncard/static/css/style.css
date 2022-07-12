@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300&display=swap");
 
 * {
-  font-family: "Noto Sans TC", sans-serif;
+  font-family: Roboto, "Helvetica Neue", Helvetica, Arial, "PingFang TC",
+    黑體-繁, "Heiti TC", 蘋果儷中黑, "Apple LiGothic Medium", 微軟正黑體,
+    "Microsoft JhengHei", sans-serif;
 }
 body {
   background-color: #273238;
@@ -21,18 +23,21 @@ html.touch *:hover {
   margin-top: 70px;
 }
 .card__menu {
-  padding-top: 20px;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px 4px 0px 0px;
 }
 .menu__title {
   width: 608px;
 }
-.title_new {
-  width: 64px;
-  height: 61px;
+.title {
+  padding: 8px 10px;
+  cursor: pointer;
+  color: black;
+}
+:target {
   border-bottom: 2px solid rgb(51, 151, 207);
 }
+
 .content_div {
   display: flex;
   justify-content: space-between;
@@ -122,4 +127,23 @@ a:hover {
 }
 .nav-link:hover {
   opacity: 0.6;
+}
+.like__container {
+  display: flex;
+  align-items: center;
+  height: 20px;
+  margin-top: 15px;
+}
+.like__container p {
+  color: rgba(0, 0, 0, 0.35);
+  margin: 0 5px;
+}
+
+.title.active {
+  border-bottom: 2.5px solid rgb(51, 151, 207);
+}
+.articles__title {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 10px;
 }

@@ -8,11 +8,26 @@
     <div class="post__card">
       <div class="post__originator">
         <div class="originator"></div>
-        <p class="post__time"></p>
       </div>
     </div>
-
-    <div class="comment__container"></div>
+    <div class="like__bar">
+      <div class="like__nums">
+        <div class="comment__nums">
+          <i class="bi bi-suit-heart-fill" style="font-size: 20px"></i>
+          <p class="like"></p>
+          <p>留言</p>
+          <p class="comment"></p>
+        </div>
+      </div>
+      <i
+        class="bi bi-heart-fill"
+        style="font-size: 20px; cursor: pointer"
+        onclick="likePost()"
+      ></i>
+    </div>
+    <div class="comment__container">
+      <div class="comment_card"></div>
+    </div>
     <div
       class="post__comment d-flex align-items-center justify-content-between"
       onclick="showmessage()"
@@ -29,7 +44,11 @@
             <p class="user__time"></p>
           </div>
         </div>
-        <i class="bi bi-arrows-angle-expand" onclick="hidemessage()"></i>
+        <i
+          class="bi bi-arrows-angle-expand"
+          style="cursor: pointer"
+          onclick="expandComment() "
+        ></i>
       </div>
 
       <div
@@ -50,7 +69,7 @@
           <i class="bi bi-image-fill" style="font-size: 24px"></i>
         </label>
         <div class="btn d-flex align-items-center">
-          <button class="cancel me-2" onclick="hidemessage()">取消</button>
+          <button class="cancel me-2" onclick="hideMessage()">取消</button>
           <button class="submit" onclick="postComment()">送出</button>
         </div>
       </div>

@@ -80,7 +80,6 @@ def get_friend_data(id):
 @pages.route('/chats', methods=['GET'])
 @token_required
 def redirect_msg(current_user):
-    # try:
     resp = model.main.redirect_msg(current_user)
     if resp:
         ncardid = resp[0]
