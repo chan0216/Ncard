@@ -7,7 +7,7 @@ def create_user():
     try:
         db = con_pool.get_connection()
         cursor = db.cursor()
-        for i in range(102, 200):
+        for i in range(0, 1000):
             # print(i)
             sql = 'INSERT INTO user (username, password,signintype) VALUES ( %s, %s,%s)'
             val = (f'test{i+1}@test.com', "test", "Ncard")

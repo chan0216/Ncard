@@ -136,7 +136,7 @@ dmypy.json
 
 # Cython debug symbols
 cython_debug/
+create.py
 private.key
 certificate.crt
 process.txt
-create.py
