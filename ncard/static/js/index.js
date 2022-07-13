@@ -44,6 +44,7 @@ function renderPage(res) {
     likeIcon.classList.add("bi-suit-heart");
     let commentIcon = document.createElement("i");
     commentIcon.classList.add("bi-chat-dots");
+
     let likeContainer = document.createElement("div");
     likeContainer.classList.add("like__container");
     let likeNums = document.createElement("p");

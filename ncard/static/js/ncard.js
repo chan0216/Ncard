@@ -17,6 +17,7 @@ async function checkStatus() {
     unverified_btn.textContent = "填寫自我介紹";
     unverified_btn.setAttribute("href", "/my/profile");
   } else if (data.message) {
+    console.log("進到");
     document.querySelector(".ncard__card").style.display = "none";
     document.querySelector(".ncard__unverified").style.display = "flex";
     let unverified_btn = document.querySelector(".unverified_btn");
