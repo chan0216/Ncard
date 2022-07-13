@@ -14,12 +14,6 @@ Password：test
 
 ## Technique
 
-### Frontend
-
-- HTML
-- CSS
-- JavaScript
-
 ### Backend
 
 - Python Flask for server framework.
@@ -31,6 +25,12 @@ Password：test
 - Deploying web applications with Docker.
 - Setting a crontab to run Ncard matching and write to a database.
 - Design web APIs follow REST.
+
+### Frontend
+
+- HTML
+- CSS
+- JavaScript
 
 ## System Architecture
 
