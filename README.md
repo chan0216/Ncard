@@ -23,6 +23,7 @@ Password：test
 - Using indexes to improve MySQL query performance.
 - Using Nginx as A Reverse Proxy with SSL.
 - Deploying web applications with Docker.
+- Support Google login with OAuth 2.0.
 - Setting a crontab to run Ncard matching and write to a database.
 - Design web APIs follow REST.
 
