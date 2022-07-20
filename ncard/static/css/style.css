@@ -150,3 +150,9 @@ a:hover {
 .bi-chat-dots {
   margin-bottom: 3px;
 }
+.bi-arrow-clockwise {
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}

@@ -24,6 +24,7 @@ def matchuser():
     )
     try:
         start_time = time.time()
+        pair_array = []
         user_list = []
         match_list = []
         db = con_pool.get_connection()
@@ -61,18 +62,22 @@ def matchuser():
             # 將已經配對過的user_id剔除
             user_list.remove(pair_user)
             match_list.remove(match_list[match_index])
+            pair_array.append((user_id, pair_user, today))
+            if not user_list:
+                break
             update_time = time.time()
             cursor.execute(
                 "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (user_id, pair_user))
             cursor.execute(
                 "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (pair_user, user_id))
-            logging.debug('更新配對陣列 time : %f sec' % (time.time() - update_time))
-            insert_time = time.time()
-            cursor.execute(
-                "INSERT INTO friend (user1, user2, date) VALUES ( %s, %s, %s)", (user_id, pair_user, today))
             db.commit()
-            logging.debug('insert 今日配對 time: %f sec' %
-                          (time.time() - insert_time))
+            logging.debug('更新配對陣列 time : %f sec' % (time.time() - update_time))
+        insert_time = time.time()
+        stmt = "INSERT INTO friend (user1, user2, date) VALUES ( %s, %s, %s)"
+        cursor.executemany(stmt, pair_array)
+        db.commit()
+        logging.debug('insert 今日配對 time: %f sec' %
+                      (time.time() - insert_time))
     except:
         db.rollback()
     finally:
