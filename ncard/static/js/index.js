@@ -1,9 +1,11 @@
 let newTitle = document.querySelector("#newTitle");
 let hotTitle = document.querySelector("#hotTitle");
+let LoadIcon = document.querySelector(".bi-arrow-clockwise");
+let indexArticles = document.querySelector(".index__articles");
+
 //顯示頁面
 function renderPage(res) {
-  let index__articles = document.querySelector(".index__articles");
-  index__articles.innerHTML = "";
+  // index__articles.innerHTML = "";
   for (const obj of res) {
     //發文人學校
     let userschool = document.createElement("p");
@@ -63,7 +65,7 @@ function renderPage(res) {
       articleDiv.append(icondiv, title, textDiv, likeContainer);
       contentDiv.append(articleDiv);
     }
-    index__articles.append(contentDiv);
+    indexArticles.append(contentDiv);
     contentDiv.setAttribute("id", obj.id);
     contentDiv.setAttribute("onclick", "selectid(this.id)");
     if (obj["gender"] == "F") {
@@ -74,15 +76,31 @@ function renderPage(res) {
   }
 }
 //取得最新文章
+let page = 0;
 const getNewpost = async () => {
-  const result = await fetch(`/api/newpost`);
+  const result = await fetch(`/api/newpost?page=${page}`);
   const data = await result.json();
   const res = data.data;
   hotTitle.classList.remove("active");
   newTitle.classList.add("active");
+  page = data["nextPage"];
+  if (page == null) {
+    observer.unobserve(LoadIcon);
+    LoadIcon.style.display = "None";
+  }
   renderPage(res);
 };
-getNewpost();
+let options = { threshold: 0.5 };
+let renderNextPages = (entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      getNewpost();
+    }
+  });
+};
+let observer = new IntersectionObserver(renderNextPages, options);
+observer.observe(LoadIcon);
+
 //顯示文章
 const getHotpost = async () => {
   const result = await fetch(`/api/articles`);
@@ -90,6 +108,9 @@ const getHotpost = async () => {
   const res = data.data;
   newTitle.classList.remove("active");
   hotTitle.classList.add("active");
+  observer.unobserve(LoadIcon);
+  indexArticles.innerHTML = "";
+  LoadIcon.style.display = "None";
   renderPage(res);
 };
 function selectid(checkid) {

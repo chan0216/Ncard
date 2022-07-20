@@ -60,7 +60,8 @@ def add_newpost(current_user):
 @newpost_blueprint.route("/newpost", methods=["GET"])
 def get_newpost():
     try:
-        resp = model.newpost.get_newpost()
+        page = int(request.args.get('page'))
+        resp = model.newpost.get_newpost(page)
         return resp
     except Exception as e:
         return {"error": True}, 500

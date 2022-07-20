@@ -17,14 +17,34 @@ def add_newpost(current_user, data, first_img):
         db.close()
 
 
-def get_newpost():
+def get_newpost(page):
     try:
+        render_num = 10
+        render_index = page * render_num
         db = con_pool.get_connection()
+        next_page = None
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT profile.gender,profile.school,newpost.id,newpost.title,newpost.content,newpost.time,newpost.first_img,newpost.like_count,newpost.comment_count from profile INNER JOIN newpost ON profile.user_id=newpost.user_id ORDER BY newpost.id DESC")
-        new_post = cursor.fetchall()
-        return {"data": new_post}
+            "SELECT profile.gender,profile.school,newpost.id,newpost.title,newpost.content,newpost.time,newpost.first_img,newpost.like_count,newpost.comment_count from profile INNER JOIN newpost ON profile.user_id=newpost.user_id ORDER BY newpost.id DESC limit %s,%s", (render_index, render_num+1))
+        new_posts = cursor.fetchall()
+        if len(new_posts) == 11:
+            next_page = page+1
+            new_posts.pop(10)
+        post_list = []
+        for post in new_posts:
+            post_data = {
+                "comment_count":  post["comment_count"],
+                "content": post["content"],
+                "first_img": post["first_img"],
+                "gender":  post["gender"],
+                "id": post["id"],
+                "like_count": post["like_count"],
+                "school": post["school"],
+                "time": post["time"],
+                "title": post["title"],
+            }
+            post_list.append(post_data)
+        return {"data": post_list, "nextPage": next_page}
     except Exception as e:
         return False
     finally:

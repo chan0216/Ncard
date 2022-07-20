@@ -90,8 +90,6 @@ def get_friends(current_user):
 def get_chats(id):
     try:
         page = int(request.args.get('page'))
-        render_num = 24
-        first_index = page * render_num
         next_page = page + 1
         token = request.cookies.get('token')
         if token:
@@ -129,10 +127,10 @@ def get_chats(id):
             "image": friend["image"]
         }
         cursor.execute(
-            "select user_id,message,time from message where ncard_id = %s ORDER BY id limit %s,%s", (id, first_index, render_num))
+            "select user_id,message,time from message where ncard_id = %s ", (id, ))
         messages = cursor.fetchall()
         cursor.execute(
-            "select user_id,message,time from message where ncard_id = %s ORDER BY id limit %s,%s", (id, first_index+render_num, render_num+render_num))
+            "select user_id,message,time from message where ncard_id = %s", (id, ))
         next_messages = cursor.fetchall()
         if not next_messages:
             next_page = None
