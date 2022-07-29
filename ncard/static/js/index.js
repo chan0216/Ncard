@@ -78,7 +78,7 @@ function renderPage(res) {
 //取得最新文章
 let page = 0;
 const getNewpost = async () => {
-  const result = await fetch(`/api/newpost?page=${page}`);
+  const result = await fetch(`/api/posts?page=${page}`);
   const data = await result.json();
   const res = data.data;
   hotTitle.classList.remove("active");
@@ -111,6 +111,7 @@ const getHotpost = async () => {
   observer.unobserve(LoadIcon);
   indexArticles.innerHTML = "";
   LoadIcon.style.display = "None";
+  document.documentElement.scrollTop = 0;
   renderPage(res);
 };
 function selectid(checkid) {

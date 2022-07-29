@@ -63,14 +63,14 @@ def matchuser():
             user_list.remove(pair_user)
             match_list.remove(match_list[match_index])
             pair_array.append((user_id, pair_user, today))
-            if not user_list:
-                break
             update_time = time.time()
             cursor.execute(
                 "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (user_id, pair_user))
             cursor.execute(
                 "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (pair_user, user_id))
             db.commit()
+            if not user_list:
+                break
             logging.debug('更新配對陣列 time : %f sec' % (time.time() - update_time))
         insert_time = time.time()
         stmt = "INSERT INTO friend (user1, user2, date) VALUES ( %s, %s, %s)"

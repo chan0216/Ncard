@@ -32,7 +32,7 @@ async function newPost() {
     },
     body: JSON.stringify(newPost),
   };
-  const response = await fetch("/api/newpost", config);
+  const response = await fetch("/api/post", config);
   const data = await response.json();
   if (data.error) {
     document.querySelector(".warning").textContent = "請先登入";
@@ -61,8 +61,8 @@ document.querySelector("#upload_img").addEventListener("change", (event) => {
       image.src = data["imgurl"];
       imageDiv.append(image);
       imageDiv.classList.add("imageDiv");
-      let newpost__content = document.querySelector(".newpost__content");
-      newpost__content.append(imageDiv);
+      let newpostContent = document.querySelector(".newpost__content");
+      newpostContent.append(imageDiv);
     });
 });
 fetch("/api/validation")
