@@ -25,12 +25,15 @@ html.touch *:hover {
 .card__menu {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 4px 4px 0px 0px;
+  position: sticky;
+  top: 45px;
+  background-color: rgba(255, 255, 255, 0.99);
 }
 .menu__title {
   width: 608px;
 }
 .title {
-  padding: 8px 10px;
+  padding: 10px;
   cursor: pointer;
   color: black;
 }
@@ -140,7 +143,7 @@ a:hover {
 }
 
 .title.active {
-  border-bottom: 2.5px solid rgb(51, 151, 207);
+  border-bottom: 2px solid rgb(51, 151, 207);
 }
 .articles__title {
   font-weight: bold;

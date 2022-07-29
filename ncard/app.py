@@ -5,16 +5,14 @@ import controller
 import model.main
 
 app = Flask(__name__)
-# app.config["JSON_AS_ASCII"] = False
-# app.config['JSON_SORT_KEYS'] = False
-# app.config["TEMPLATES_AUTO_RELOAD"] = True
 app.register_blueprint(controller.api.user_blueprint, url_prefix='/api')
-app.register_blueprint(controller.api.newpost_blueprint, url_prefix='/api')
+app.register_blueprint(controller.api.post_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.verify_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.ncard_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.profile_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.friend_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.chats_blueprint, url_prefix='/api')
+app.register_blueprint(controller.api.comments_blueprint, url_prefix='/api')
 app.register_blueprint(controller.pages)
 socketio = SocketIO(app, cors_allowed_origins='*')
 
