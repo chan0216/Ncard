@@ -45,7 +45,7 @@ Password：test
 
 - Homepage showing the latest articles.
 
-  <img width="927" alt="image" src="https://user-images.githubusercontent.com/94737861/183302160-3861162c-d8d4-4df4-905d-b1af2a7dd85b.png">
+<img width="900" alt="image" src="https://user-images.githubusercontent.com/94737861/183302281-1a84e928-79eb-4396-b0b9-399fca1901a3.png">
 
 ### Share Ideas
 
