@@ -45,7 +45,7 @@ Password：test
 
 - Homepage showing the latest articles.
 
-  ![](ncard/static/image/ncard_homepage.png)
+  <img width="927" alt="image" src="https://user-images.githubusercontent.com/94737861/183302160-3861162c-d8d4-4df4-905d-b1af2a7dd85b.png">
 
 ### Share Ideas
 
