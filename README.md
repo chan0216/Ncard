@@ -36,22 +36,22 @@ Password：test
 ## System Architecture
 
 
-![](./ncard/static/image/Diagram.jpg)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183302499-a6cd16b7-1726-4947-a03d-e8bce775cd00.png">
 
 ## Introduction
 
 
 ### Browse Articles
 
-- Homepage showing the latest articles.
+- Display the latest article on a homepage.
 
-<img width="900" alt="image" src="https://user-images.githubusercontent.com/94737861/183302387-a8a571bb-5151-468c-8867-723e228669e8.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183302387-a8a571bb-5151-468c-8867-723e228669e8.png">
 
 ### Share Ideas
 
 - After registration and filling out basic information, users can write an article and post comments.
 
-  ![](ncard/static/image/ncard_post.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183302981-424ba62b-be2f-4f38-808d-2ae57252f30a.png">
 
   ![](ncard/static/image/Ncard_comment.png)
 
