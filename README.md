@@ -53,7 +53,7 @@ Password：test
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183302981-424ba62b-be2f-4f38-808d-2ae57252f30a.png">
 
-  ![](ncard/static/image/Ncard_comment.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183303591-53c65ef0-aa35-4184-859d-ecb99337d6ea.png">
 
 ### Match-making
 
@@ -61,12 +61,10 @@ Password：test
 - Users will only meet each person one time, once the opportunity has passed, it is gone forever.
 - As long as both users hit the button and agree to meet each other they can be friends.
 
-![](ncard/static/image/ncard_match.png)
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183303544-f84896e8-03b5-4002-bd07-d80ca8bfa6b7.png">
 
 ### Chat
 
 - After users become friends, they can start a conversation and exchange information.
-
-![ncard_chat_](https://user-images.githubusercontent.com/94737861/176986984-711ef07f-30b9-42f9-b11f-d1031a8d1cdb.gif)
-
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/176986984-711ef07f-30b9-42f9-b11f-d1031a8d1cdb.gif">
 
