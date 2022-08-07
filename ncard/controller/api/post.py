@@ -23,11 +23,10 @@ def post_image():
 @dec.token_required
 def add_new_post(current_user):
     try:
-
         data = request. json
         first_img = None
         imgs = re.search(
-            r"(https://.(.*?)[-\w]+\.(jpg|gif|png|jpeg$))", data["postText"])
+            r"(https?:\/\/.*\.(?:gif|jpg|png|bmp))", data["postText"])
         if imgs:
             first_img = imgs.group()
         resp = model.post.add_new_post(
