@@ -21,6 +21,7 @@ html.touch *:hover {
   background-color: rgba(255, 255, 255, 0.99);
   padding: 15px 0;
   margin-top: 70px;
+  margin: auto;
 }
 .card__menu {
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
@@ -30,7 +31,7 @@ html.touch *:hover {
   background-color: rgba(255, 255, 255, 0.99);
 }
 .menu__title {
-  width: 608px;
+  width: 650px;
 }
 .title {
   padding: 10px;
@@ -45,8 +46,8 @@ html.touch *:hover {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 608px;
-  height: 157px;
+  width: 650px;
+  height: 170px;
   margin: 0 auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.15);
   cursor: pointer;
@@ -57,16 +58,23 @@ html.touch *:hover {
 .man {
   color: rgb(36, 144, 191);
 }
-.first_img {
+.image_div {
   width: 84px;
   height: 84px;
+  object-fit: cover;
+}
+.first_img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
 }
 .text_div {
   line-height: 20px;
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 500px;
+  width: 550px;
 }
 .icondiv {
   display: flex;
@@ -81,7 +89,9 @@ html.touch *:hover {
 
 .index {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: [start] 220px [mainLeft] auto [mainRight] 300px [end];
+  max-width: 1280px;
+  margin: auto;
 }
 .member__indexcard {
   margin: 0 auto;
@@ -106,12 +116,14 @@ a {
 .member__tag {
   display: none;
   position: fixed;
-  transform: translateX(-80px);
+  transform: translateX(-70px);
 }
 .visitor__tag {
   display: none;
   color: white;
   position: fixed;
+  transform: translateX(-45px);
+  font-size: 18px;
 }
 .index__login {
   color: rgb(255, 255, 255);
@@ -123,6 +135,7 @@ a {
   display: flex;
   align-items: center;
   padding: 0px 16px;
+  justify-content: center;
   text-align: left;
 }
 a:hover {
@@ -158,4 +171,24 @@ a:hover {
   display: flex;
   justify-content: center;
   margin-top: 10px;
+}
+.intro {
+  display: flex;
+  flex-direction: column;
+  width: 270px;
+  margin-left: 10px;
+  position: relative;
+}
+
+.slide {
+  margin-top: 16px;
+  background-color: white;
+  position: fixed;
+  width: 264px;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #000000c4;
+  border-radius: 50px;
+  border: 4px solid #00000000;
 }

@@ -56,11 +56,14 @@ function renderPage(res) {
     likeContainer.append(likeIcon, likeNums, commentIcon, commentNums);
     //呈現第一張圖片
     if (obj["first_img"]) {
+      let imageDiv = document.createElement("div");
       let image = document.createElement("img");
       image.src = obj["first_img"];
       image.classList.add("first_img");
+      imageDiv.classList.add("image_div");
+      imageDiv.append(image);
       articleDiv.append(icondiv, title, textDiv, likeContainer);
-      contentDiv.append(articleDiv, image);
+      contentDiv.append(articleDiv, imageDiv);
     } else {
       articleDiv.append(icondiv, title, textDiv, likeContainer);
       contentDiv.append(articleDiv);

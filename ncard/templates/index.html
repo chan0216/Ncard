@@ -19,6 +19,11 @@
     {% block title %}
     <link rel="stylesheet" href="../static/css/style.css" />
     <title>Ncard</title>
+    <link
+      rel="icon"
+      type="image/x-icon"
+      href="../static/image/ncard_icon.png"
+    />
     {% endblock %}
   </head>
 
@@ -58,7 +63,7 @@
         </div>
         <ul class="nav nav-stranger">
           <li class="nav-item">
-            <a class="nav-link" href="/login">登入 / 註冊</a>
+            <a class="nav-link login" href="/login">登入 / 註冊</a>
           </li>
         </ul>
         {% endblock %}
@@ -98,14 +103,88 @@
           </div>
           <div></div>
           <div class="index__articles"></div>
+
           <i class="bi bi-arrow-clockwise"></i>
+        </div>
+        <div class="intro">
+          <div
+            id="carouselExampleControls"
+            class="carousel slide"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-bs-interval="7000">
+                <img
+                  src="../static/image/Ncard_intro1.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="7000">
+                <img
+                  src="../static/image/Ncard_intro2.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="7000">
+                <img
+                  src="../static/image/Ncard_intro3.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="7000">
+                <img
+                  src="../static/image/Ncard_intro4.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+              <div class="carousel-item" data-bs-interval="7000">
+                <img
+                  src="../static/image/Ncard_intro5.png"
+                  class="d-block w-100"
+                  alt="..."
+                />
+              </div>
+            </div>
+            <button
+              class="carousel-control-prev"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="prev"
+            >
+              <span
+                class="carousel-control-prev-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Previous</span>
+            </button>
+            <button
+              class="carousel-control-next"
+              type="button"
+              data-bs-target="#carouselExampleControls"
+              data-bs-slide="next"
+            >
+              <span
+                class="carousel-control-next-icon"
+                aria-hidden="true"
+              ></span>
+              <span class="visually-hidden">Next</span>
+            </button>
+          </div>
         </div>
       </div>
     </main>
     {% endblock %} {% block link %}
     <script src="../static/js/user.js"></script>
     <script src="../static/js/index.js"></script>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+      crossorigin="anonymous"
+    ></script>
     {% endblock %}
   </body>
 </html>
