@@ -32,6 +32,7 @@ Password：test
 - HTML
 - CSS
 - JavaScript
+- Bootstrap 
 
 ## System Architecture
 
