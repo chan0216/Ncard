@@ -19,7 +19,7 @@ Password：test
 - Python Flask for server framework.
 - Creating a real-time chat with Socket.io.
 - Using AWS S3 to store the images and CloudFront CDN to serve images fast.
-- Using RDS for MySQL database to store data.
+- Using RDS for MySQL database to store data and normalize a database structure in 3NF.
 - Using Nginx as A Reverse Proxy with SSL.
 - Deploying web applications with Docker.
 - Support Google login with OAuth 2.0.
