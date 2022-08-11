@@ -13,7 +13,7 @@ def check_user(username):
         else:
             return None
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -32,7 +32,7 @@ def create_user(username, password):
         return user_id
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()

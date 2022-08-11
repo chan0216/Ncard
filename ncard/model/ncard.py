@@ -58,7 +58,7 @@ def get_ncard(current_user, today, yesterday):
             return {"data": match_user_data}
         return {"data": None}
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -109,7 +109,7 @@ def create_ncard(current_user, yesterday, now, message):
                 return{"ok": True, "friend": False}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -138,7 +138,7 @@ def user_status(current_user):
             return {"verify_status": "Ncard"}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()

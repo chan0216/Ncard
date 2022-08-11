@@ -12,8 +12,8 @@ def get_profile(current_user):
         resp = model.cardprofile.get_profile(
             current_user)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @profile_blueprint.route("/profile", methods=["POST"])
@@ -23,5 +23,5 @@ def post_profile(current_user):
         data = request. json
         resp = model.cardprofile.post_profile(current_user, data)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500

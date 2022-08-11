@@ -13,8 +13,8 @@ def add_profile(current_user):
         resp = model.verify.add_profile(
             current_user, data)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @verify_blueprint.route("/validation", methods=["GET"])
@@ -23,5 +23,5 @@ def get_profile(current_user):
     try:
         resp = model.verify.get_profile(current_user)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500

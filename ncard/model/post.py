@@ -11,7 +11,7 @@ def add_new_post(current_user, data, first_img):
         return {"ok": True}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -46,9 +46,8 @@ def get_new_post(page):
             post_list.append(post_data)
         return {"data": post_list, "nextPage": next_page}
     except Exception as e:
-        return False
+        raise e
     finally:
-        cursor.close()
         db.close()
 
 
@@ -61,7 +60,7 @@ def get_hot_articles():
         new_post = cursor.fetchall()
         return {"data": new_post}
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -97,7 +96,7 @@ def get_article(id, current_user):
         else:
             return {"error": True, "message": "沒有這篇文章喔"}, 400
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -133,7 +132,7 @@ def patch_post_like(post_id, current_user):
         return {"like_count": like_count}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         db.commit()
         cursor.close()

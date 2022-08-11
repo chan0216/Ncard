@@ -15,8 +15,8 @@ def get_all_friends(current_user):
         resp = model.friend.get_all_friends(
             current_user)
         return resp
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @friend_blueprint.route("/friend/<id>", methods=["GET"])
@@ -29,5 +29,5 @@ def get_friend(id):
             current_user = jwtdata["user_id"]
         resp = model.friend.get_friend(id, current_user)
         return resp
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500

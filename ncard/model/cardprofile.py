@@ -13,7 +13,7 @@ def get_profile(current_user):
         else:
             return {"data": None}
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -40,7 +40,7 @@ def post_profile(current_user, data):
         return {"ok": True}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()

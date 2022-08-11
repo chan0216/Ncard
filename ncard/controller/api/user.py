@@ -65,8 +65,8 @@ def user_signin():
             res.set_cookie('token', token, expires=datetime.datetime.utcnow(
             ) + datetime.timedelta(minutes=300))
             return res
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @user_blueprint.route("/user", methods=["GET"])
