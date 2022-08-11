@@ -16,8 +16,8 @@ def get_ncard(current_user):
         resp = model.ncard.get_ncard(
             current_user, today, yesterday)
         return resp
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @ncard_blueprint.route("/ncard", methods=["POST"])
@@ -33,8 +33,8 @@ def create_ncard(current_user):
         resp = model.ncard.create_ncard(
             current_user, yesterday, now, message)
         return resp
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @ncard_blueprint.route("/status", methods=["GET"])
@@ -43,5 +43,5 @@ def user_status(current_user):
     try:
         resp = model.ncard.user_status(current_user)
         return resp
-    except:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500

@@ -14,7 +14,7 @@ def add_comment(data, current_user):
         return {"ok": True}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -43,6 +43,8 @@ def get_comment(id):
             return {"data": comment_list}
         else:
             return {"data": None}
+    except Exception as e:
+        raise e
     finally:
         cursor.close()
         db.close()

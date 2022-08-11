@@ -24,7 +24,7 @@ def get_all_friends(current_user):
         else:
             return {"data": None}
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -64,7 +64,7 @@ def get_friend(id, current_user):
             }
             return {"data": friend_data}
     except Exception as e:
-        return False
+        raise e
 
     finally:
         cursor.close()

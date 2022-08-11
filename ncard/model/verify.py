@@ -17,7 +17,7 @@ def add_profile(current_user, data):
             return {"error": True, "message": "重複的資料"}, 400
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -35,7 +35,7 @@ def get_profile(current_user):
         else:
             return {"data": None}
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()

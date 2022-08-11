@@ -10,7 +10,7 @@ def redirect_msg(current_user):
         last_ncardid = cursor.fetchone()
         return last_ncardid
     except Exception as e:
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
@@ -26,7 +26,7 @@ def handle_send_message(data, now):
         return {"ok": True}
     except Exception as e:
         db.rollback()
-        return False
+        raise e
     finally:
         cursor.close()
         db.close()
