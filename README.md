@@ -36,7 +36,7 @@ Password：test
 ## System Architecture
 
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/183302499-a6cd16b7-1726-4947-a03d-e8bce775cd00.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/184095340-4c512e69-3fe9-4bd7-aeff-692686c91a1d.png">
 
 ## Introduction
 
