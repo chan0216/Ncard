@@ -38,6 +38,10 @@ Password：test
 
 <img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/184095340-4c512e69-3fe9-4bd7-aeff-692686c91a1d.png">
 
+## Database Schema
+
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/184921021-16f43f97-7ede-45c4-b598-c11885aa4407.png">
+
 ## Introduction
 
 
