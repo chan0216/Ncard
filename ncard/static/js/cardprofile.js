@@ -17,25 +17,28 @@ async function checkStatus() {
 async function getProfile() {
   const response = await fetch("/api/profile");
   const data = await response.json();
+  console.log(data.data);
   if (data.data) {
     let info = data.data;
     let image = document.createElement("img");
-    image.src = info.image;
-    image.classList.add("image");
-    image.setAttribute("id", "ncardimage");
-    document.querySelector(".imagediv").append(image);
-    document.querySelector(".realname").textContent = info.realname;
-    document.querySelector(".school").textContent = info.school;
-    document.querySelector(".interest").value = info.interest;
-    document.querySelector(".club").value = info.club;
-    document.querySelector(".course").value = info.course;
-    document.querySelector(".country").value = info.country;
-    document.querySelector(".worry").value = info.worry;
-    document.querySelector(".exchange").value = info.exchange;
-    document.querySelector(".trying").value = info.trying;
-  } else {
-    let welTitle = document.querySelector(".wel_title");
-    welTitle.textContent = "只要回答三個問題，並新增照片就可以開啟抽卡功能";
+    if (info.image) {
+      image.src = info.image;
+      image.classList.add("image");
+      image.setAttribute("id", "ncardimage");
+      document.querySelector(".imagediv").append(image);
+      document.querySelector(".realname").textContent = info.name;
+      document.querySelector(".school").textContent = info.school;
+      document.querySelector(".interest").value = info.interest;
+      document.querySelector(".club").value = info.club;
+      document.querySelector(".course").value = info.course;
+      document.querySelector(".country").value = info.country;
+      document.querySelector(".worry").value = info.worry;
+      document.querySelector(".exchange").value = info.exchange;
+      document.querySelector(".trying").value = info.trying;
+    } else {
+      let welTitle = document.querySelector(".wel_title");
+      welTitle.textContent = "只要回答三個問題，並新增照片就可以開啟抽卡功能";
+    }
   }
 }
 //上傳頭貼

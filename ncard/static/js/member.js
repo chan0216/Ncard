@@ -9,7 +9,7 @@ fetch("/api/validation")
       let member__card = document.querySelector(".member__card");
       member__card.style.visibility = "visible";
       let name = document.querySelector("#name");
-      name.textContent = data.data.realname;
+      name.textContent = data.data.name;
       let school = document.querySelector("#school");
       school.textContent = data.data.school;
     } else {

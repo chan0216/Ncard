@@ -24,7 +24,7 @@ def get_ncard(current_user, today, yesterday):
                 invited = True if user1["user1_message"] else False
                 is_friend = True if user1["friendship"] else False
                 cursor.execute(
-                    "select ncard.*,profile.* from ncard INNER JOIN profile on ncard.user_id = profile.user_id where ncard.user_id=%s", (user1["user2"],))
+                    "select user_id,gender,name,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (user1["user2"],))
                 match_user = cursor.fetchone()
 
             else:
@@ -35,7 +35,7 @@ def get_ncard(current_user, today, yesterday):
                 invited = True if user2["user2_message"] is not None else False
                 is_friend = True if user2["friendship"] is not None else False
                 cursor.execute(
-                    "select ncard.*,profile.* from ncard INNER JOIN profile on ncard.user_id = profile.user_id where ncard.user_id=%s", (user2["user1"],))
+                    "select user_id,gender,name,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (user2["user1"],))
                 match_user = cursor.fetchone()
 
             match_user_data = {
@@ -45,7 +45,7 @@ def get_ncard(current_user, today, yesterday):
                 "gender": match_user["gender"],
                 "image": match_user["image"],
                 "school": match_user["school"],
-                "realname": match_user["realname"],
+                "realname": match_user["name"],
                 "interest": match_user["interest"],
                 "club": match_user["club"],
                 "course": match_user["course"],
@@ -120,19 +120,13 @@ def user_status(current_user):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT ncard.user_id,ncard.match_list FROM ncard where user_id=%s ", (current_user, ))
-        ncard_user = cursor.fetchone()
-        if ncard_user is not None:
-            match_list = json.loads(ncard_user["match_list"])
-        cursor.execute(
-            "SELECT  profile.user_id FROM  profile where user_id=%s ", (current_user, ))
-        profile_user = cursor.fetchone()
-
-        if ncard_user is None and profile_user is None:
+            "SELECT type,match_list FROM user where user_id=%s ", (current_user, ))
+        user_data = cursor.fetchone()
+        if user_data["type"] == "basic":
             return {"verify_status": "basic"}
-        elif profile_user != None and ncard_user == None:
+        elif user_data["type"] == "profile":
             return {"verify_status": "profile"}
-        elif profile_user != None and ncard_user != None and len(match_list) == 0:
+        elif user_data["type"] == "ncard" and len(json.loads(user_data["match_list"])) == 0:
             return {"verify_status": "Ncard", "message": "還未配對"}
         else:
             return {"verify_status": "Ncard"}

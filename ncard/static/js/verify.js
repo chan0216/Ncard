@@ -18,16 +18,16 @@ fetch("/api/validation")
   });
 //提交基本資料
 async function submitProfile() {
-  let realname = document.querySelector("#realname").value;
+  let fullname = document.querySelector("#fullname").value;
   let gender = document.querySelector("#gender").value;
   let school = document.querySelector("#school").value;
-  if (realname === "" || school === "") {
+  if (fullname === "" || school === "") {
     userformAlert.textContent = "資料請輸入完整";
     return;
   }
   userformAlert.innerText = "";
   const profile = {
-    realname: realname,
+    fullname: fullname,
     gender: gender,
     school: school,
   };

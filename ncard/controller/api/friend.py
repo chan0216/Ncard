@@ -27,7 +27,9 @@ def get_friend(id):
             jwtdata = jwt.decode(token.encode('UTF-8'),
                                  config("secret_key"), algorithms=["HS256"])
             current_user = jwtdata["user_id"]
-        resp = model.friend.get_friend(id, current_user)
-        return resp
+            resp = model.friend.get_friend(id, current_user)
+            return resp
+        else:
+            return {"error": True, "message": "未登入系統，拒絕存取"}, 403
     except Exception as error:
         return {'error': str(error)}, 500

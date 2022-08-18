@@ -6,7 +6,7 @@ def check_user(username):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT  * from user WHERE username  = %s ", (username,))
+            "SELECT * from user WHERE username  = %s ", (username,))
         user = cursor.fetchone()
         if user:
             return user
@@ -23,8 +23,8 @@ def create_user(username, password):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
-        sql = "Insert Into user(username,password) Values(%s,%s)"
-        val = (username, password)
+        sql = "Insert Into user(username,password,type) Values( %s,%s,%s)"
+        val = (username, password,"basic")
         cursor.execute(sql, val)
         cursor.execute(
             "SELECT  `user_id` from user WHERE username = %s", (username,))

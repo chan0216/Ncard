@@ -42,10 +42,10 @@ def get_friends(current_user):
             users_list.remove(current_user)
             friend_id = users_list[0]
             cursor.execute(
-                "select ncard.image,profile.realname from ncard inner join profile on ncard.user_id=profile.user_id where ncard.user_id=%s", (friend_id,))
+                "select image,name from user where user_id=%s", (friend_id,))
             friend = cursor.fetchone()
             friends_data = {
-                "name": friend["realname"],
+                "name": friend["name"],
                 "image": friend["image"],
                 "message": info["message"],
                 "time": info["time"].strftime("%m-%d %H:%M"),
@@ -77,19 +77,19 @@ def get_chats(page, next_page, id, current_user):
         friend_id = users_list[0]
         # current_user data
         cursor.execute(
-            "select profile.user_id,profile.realname,ncard.image from profile inner join ncard on profile.user_id=ncard.user_id where profile.user_id=%s", (current_user, ))
+            "select user_id,name,image from user where user_id=%s", (current_user, ))
         user = cursor.fetchone()
         user_data = {
             "user_id": user["user_id"],
-            "name": user["realname"],
+            "name": user["name"],
             "image": user["image"]
         }
         cursor.execute(
-            "select profile.user_id,profile.realname,ncard.image from profile inner join ncard on profile.user_id=ncard.user_id where profile.user_id=%s", (friend_id, ))
+            "select user_id,name,image from user where user_id=%s", (friend_id, ))
         friend = cursor.fetchone()
         friend_data = {
             "friend_id": friend["user_id"],
-            "name": friend["realname"],
+            "name": friend["name"],
             "image": friend["image"]
         }
         cursor.execute(

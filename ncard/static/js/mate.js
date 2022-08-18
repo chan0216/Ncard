@@ -4,6 +4,10 @@ fetch(`/api/friend/${friend_id}`)
     return response.json();
   })
   .then((data) => {
+    if (data.error) {
+      window.location.replace("/");
+      return;
+    }
     let ncard = document.querySelector(".ncard__card");
     ncard.style.display = "block";
     if (data.data) {
