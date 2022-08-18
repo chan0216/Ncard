@@ -139,5 +139,6 @@ cython_debug/
 
 private.key
 certificate.crt
-process.txt
 process.log
+
+private/

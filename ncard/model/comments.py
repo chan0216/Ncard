@@ -9,7 +9,7 @@ def add_comment(data, current_user):
                        (data["postId"], current_user, data["comment"], data["createTime"]))
 
         cursor.execute(
-            "UPDATE newpost SET comment_count = comment_count + 1 WHERE id = %s;", (data["postId"],))
+            "UPDATE post SET comment_count = comment_count + 1 WHERE id = %s;", (data["postId"],))
         db.commit()
         return {"ok": True}
     except Exception as e:
@@ -25,7 +25,7 @@ def get_comment(id):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT comment.comment,comment.time, profile.* from comment INNER JOIN profile ON comment.user_id=profile.user_id where comment.post_id=%s ORDER BY comment.id", (id,))
+            "SELECT comment.comment,comment.time,user.gender,user.school,user.user_id from comment INNER JOIN user ON comment.user_id=user.user_id where comment.post_id=%s ORDER BY comment.id", (id,))
         all_comment = cursor.fetchall()
         if all_comment:
             comment_list = []

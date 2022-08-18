@@ -14,8 +14,8 @@ def add_comment(current_user):
         data = request. json
         resp = model.comments.add_comment(data, current_user)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500
 
 
 @comments_blueprint.route("/comment/<id>", methods=["GET"])
@@ -23,5 +23,5 @@ def get_comment(id):
     try:
         resp = model.comments.get_comment(id)
         return resp
-    except Exception as e:
-        return {"error": True}, 500
+    except Exception as error:
+        return {'error': str(error)}, 500

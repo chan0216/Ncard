@@ -5,7 +5,7 @@ def add_new_post(current_user, data, first_img):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
-        cursor.execute("Insert Into newpost(user_id ,title ,content ,time ,first_img) Values(%s, %s ,%s ,%s ,%s)",
+        cursor.execute("Insert Into post(user_id ,title ,content ,time ,first_img) Values(%s, %s ,%s ,%s ,%s)",
                        (current_user, data["postTitle"], data["postText"], data["timenow"], first_img))
         db.commit()
         return {"ok": True}
@@ -25,7 +25,7 @@ def get_new_post(page):
         next_page = None
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT profile.gender,profile.school,newpost.id,newpost.title,newpost.content,newpost.time,newpost.first_img,newpost.like_count,newpost.comment_count from profile INNER JOIN newpost ON profile.user_id=newpost.user_id ORDER BY newpost.id DESC limit %s,%s", (render_index, render_num+1))
+            "SELECT user.gender,user.school,post.id,post.title,post.content,post.time,post.first_img,post.like_count,post.comment_count from user INNER JOIN post ON user.user_id=post.user_id ORDER BY post.id DESC limit %s,%s", (render_index, render_num+1))
         new_posts = cursor.fetchall()
         if len(new_posts) == 11:
             next_page = page+1
@@ -56,9 +56,9 @@ def get_hot_articles():
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "SELECT profile.gender,profile.school,newpost.id,newpost.title,newpost.content,newpost.time,newpost.first_img,newpost.like_count,newpost.comment_count from profile INNER JOIN newpost ON profile.user_id=newpost.user_id ORDER BY like_count DESC")
-        new_post = cursor.fetchall()
-        return {"data": new_post}
+            "SELECT user.gender,user.school,post.id,post.title,post.content,post.time,post.first_img,post.like_count,post.comment_count from user INNER JOIN post ON user.user_id=post.user_id ORDER BY like_count DESC")
+        hot_post = cursor.fetchall()
+        return {"data": hot_post}
     except Exception as e:
         raise e
     finally:
@@ -70,7 +70,7 @@ def get_article(id, current_user):
     try:
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
-        cursor.execute("SELECT profile.user_id,profile.gender,profile.school,newpost.title,newpost.content,newpost.time,newpost.comment_count,newpost.like_count from profile INNER JOIN newpost ON profile.user_id=newpost.user_id where newpost.id=%s", (id,))
+        cursor.execute("SELECT user.user_id,user.gender,user.school,post.title,post.content,post.time,post.comment_count,post.like_count from user INNER JOIN post ON user.user_id=post.user_id where post.id=%s", (id,))
         post = cursor.fetchone()
         like_post = False
         if current_user:
@@ -113,22 +113,22 @@ def patch_post_like(post_id, current_user):
             cursor.execute(
                 "DELETE FROM user_post_like WHERE user_id=%s and post_id=%s", (current_user, post_id))
             cursor.execute(
-                "select like_count from newpost where id=%s", (post_id,))
+                "select like_count from post where id=%s", (post_id,))
             like_count = cursor.fetchone()
             like_count = like_count[0]
             like_count -= 1
             cursor.execute(
-                "UPDATE newpost SET like_count=%s WHERE id=%s", (like_count, post_id))
+                "UPDATE post SET like_count=%s WHERE id=%s", (like_count, post_id))
         else:
             cursor.execute(
                 "insert into user_post_like(user_id,post_id) values (%s,%s)", (current_user, post_id))
             cursor.execute(
-                "select like_count from newpost where id=%s", (post_id,))
+                "select like_count from post where id=%s", (post_id,))
             like_count = cursor.fetchone()
             like_count = like_count[0]
             like_count += 1
             cursor.execute(
-                "UPDATE newpost SET like_count=%s WHERE id=%s", (like_count, post_id))
+                "UPDATE post SET like_count=%s WHERE id=%s", (like_count, post_id))
         return {"like_count": like_count}
     except Exception as e:
         db.rollback()

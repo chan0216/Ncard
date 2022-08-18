@@ -6,7 +6,7 @@ def get_profile(current_user):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "select ncard.*,profile.* from ncard INNER JOIN profile on ncard.user_id = profile.user_id where ncard.user_id=%s", (current_user,))
+            "select name,gender,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (current_user,))
         user = cursor.fetchone()
         if user:
             return {"data": user}
@@ -24,18 +24,19 @@ def post_profile(current_user, data):
         db = con_pool.get_connection()
         cursor = db.cursor(dictionary=True)
         cursor.execute(
-            "select user_id from ncard where user_id=%s", (current_user,))
-        result = cursor.fetchone()
+            "select type from user where user_id=%s", (current_user,))
+        user_data = cursor.fetchone()
 
-        if result is None:
-            sql = "INSERT INTO ncard(user_id, image,  interest, club, course, country, worry, exchange, trying ,match_list) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-            val = (current_user, data["ncardImage"], data["interest"], data["club"], data["course"],
-                   data["country"], data["worry"], data["exchange"], data["trying"], '[]')
+        if user_data["type"] == "profile":
+
+            sql = "UPDATE user SET type=%s,image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s,match_list=%s where user_id=%s"
+            val = ("ncard", data["ncardImage"], data["interest"], data["club"], data["course"],
+                   data["country"], data["worry"], data["exchange"], data["trying"], '[]', current_user)
             cursor.execute(sql, val)
             db.commit()
         else:
-            cursor.execute("UPDATE ncard SET image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s  where user_id=%s", (data["ncardImage"], data["interest"], data["club"], data["course"],
-                                                                                                                                                     data["country"], data["worry"], data["exchange"], data["trying"], current_user))
+            cursor.execute("UPDATE user SET image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s where user_id=%s", (
+                data["ncardImage"], data["interest"], data["club"], data["course"], data["country"], data["worry"], data["exchange"], data["trying"], current_user))
             db.commit()
         return {"ok": True}
     except Exception as e:

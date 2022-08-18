@@ -150,6 +150,12 @@ socket.on("connect", function () {
 
 function sendMessage() {
   const messageText = document.querySelector("#messageText");
+  let warnText = document.querySelector(".warn_text");
+  warnText.textContent = "";
+  if (messageText.value == "") {
+    warnText.textContent = "請輸入內容！";
+    return;
+  }
   socket.emit("send_message", {
     userId: userId,
     name: userName,

@@ -17,10 +17,10 @@ def matchuser():
     con_pool = mysql.connector.pooling.MySQLConnectionPool(
         pool_name='connection_pool',
         pool_size=10,
-        host=config('host', default=''),
-        database=config('database', default=''),
-        user=config('user', default=''),
-        password=config('password', default='')
+        host=config('host'),
+        database=config('database'),
+        user=config('user'),
+        password=config('password')
     )
     try:
         start_time = time.time()
@@ -34,7 +34,8 @@ def matchuser():
         db.commit()
         select_time = time.time()
         # 取出今日要配對的user_id
-        cursor.execute("SELECT user_id,match_list From ncard")
+        cursor.execute(
+            "SELECT user_id,match_list From user where type='ncard'")
         all_users = cursor.fetchall()
         logging.debug('取出 user_id time: %f sec' % (time.time() - select_time))
         for user in all_users:
@@ -53,21 +54,22 @@ def matchuser():
             user_list.remove(user_id)
             matching_list = match_list[user_index]
             match_list.remove(matching_list)
-            # 隨機抽取一位使用者，與曾經配對過的陣列比對，若配對過則重新配對
+            # 隨機抽取一位使用者，與曾經配對過的陣列比對，若配對過則會重新配對
             match_index = random.randrange(len(user_list))
             pair_user = user_list[match_index]
             while (pair_user in matching_list):
                 match_index = random.randrange(len(user_list))
                 pair_user = user_list[match_index]
+
             # 將已經配對過的user_id剔除
             user_list.remove(pair_user)
             match_list.remove(match_list[match_index])
             pair_array.append((user_id, pair_user, today))
             update_time = time.time()
             cursor.execute(
-                "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (user_id, pair_user))
+                "UPDATE user SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (user_id, pair_user))
             cursor.execute(
-                "UPDATE ncard SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (pair_user, user_id))
+                "UPDATE user SET match_list=JSON_ARRAY_APPEND (match_list, '$' , %s) where user_id=%s", (pair_user, user_id))
             db.commit()
             if not user_list:
                 break
