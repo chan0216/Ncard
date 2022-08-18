@@ -40,7 +40,8 @@ Password：test
 
 ## Database Schema
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/184921021-16f43f97-7ede-45c4-b598-c11885aa4407.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/185323839-d4a25308-92e0-4fe0-b7f6-0580baaaa349.png">
+
 
 ## Introduction
 
