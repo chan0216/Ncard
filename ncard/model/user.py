@@ -26,7 +26,6 @@ def create_user(username, password):
         sql = "Insert Into user(username,password,type) Values( %s,%s,%s)"
         val = (username, password,"basic")
         cursor.execute(sql, val)
-        db.commit()
         cursor.execute(
             "SELECT  `user_id` from user WHERE username = %s", (username,))
         user_id = cursor.fetchone()

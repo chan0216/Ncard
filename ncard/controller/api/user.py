@@ -84,5 +84,5 @@ def get_user():
 @user_blueprint.route("/user", methods=["DELETE"])
 def delete_user():
     res = make_response(jsonify({"ok": True}), 200)
-    res.set_cookie('token', expires=0)
+    res.delete_cookie("token")
     return res
