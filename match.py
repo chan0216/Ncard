@@ -53,6 +53,7 @@ def matchuser():
             user_id = user_list[user_index]
             user_list.remove(user_id)
             matching_list = match_list[user_index]
+            # 移除正在配對的人的match_list
             match_list.remove(matching_list)
             # 隨機抽取一位使用者，與曾經配對過的陣列比對，若配對過則會重新配對
             match_index = random.randrange(len(user_list))
