@@ -1,21 +1,22 @@
 const userformSubmit = document.querySelector(".userform__submit");
 const userformAlert = document.querySelector(".userform__alert");
-fetch("/api/validation")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    if (data.error) {
-      userformSubmit.disabled = true;
-      userformAlert.textContent = "請先登入";
-      userformSubmit.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-    }
-    if (data.data) {
-      //已經填過的狀況
-      document.querySelector(".userform__submit").disabled = true;
-      userformAlert.textContent = "你已經填過基本資料了喔！";
-    }
-  });
+
+async function checkVali() {
+  const result = await fetch("/api/validation");
+  const data = await result.json();
+  if (data.error) {
+    userformSubmit.disabled = true;
+    userformAlert.textContent = "請先登入";
+    userformSubmit.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+  }
+  if (data.data) {
+    //已經填過的狀況
+    document.querySelector(".userform__submit").disabled = true;
+    userformAlert.textContent = "你已經填過基本資料了喔！";
+  }
+}
+checkVali();
+
 //提交基本資料
 async function submitProfile() {
   let fullname = document.querySelector("#fullname").value;

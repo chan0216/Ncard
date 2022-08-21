@@ -12,14 +12,15 @@ async function showMessage() {
   }
 }
 //顯示好友列表
-fetch("/api/messages")
-  .then((res) => res.json())
-  .then((data) => {
-    let res = data.data;
-    res.forEach((friend) => {
-      renderFriends(friend);
-    });
+async function fetchMsg() {
+  const response = await fetch("/api/messages");
+  const data = await response.json();
+  let res = data.data;
+  res.forEach((friend) => {
+    renderFriends(friend);
   });
+}
+
 function renderFriends(friend) {
   const friendList = document.querySelector(".friend__list");
   const msgDiv = document.createElement("div");
@@ -51,11 +52,11 @@ function renderFriends(friend) {
 //得到聊天訊息
 const msgRoomId = location.pathname.split("/").pop();
 const chatsAPI = `/api/message/${msgRoomId}?page=`;
-let chastPage = 0;
+let chatsPage = 0;
 let options = { threshold: 0.1 };
 let userId, userName, userImg, friendId, friendName, friendImg;
 async function renderMessages() {
-  const res = await fetch(chatsAPI + chastPage);
+  const res = await fetch(chatsAPI + chatsPage);
   const data = await res.json();
   if (data.error) {
     const msgDiv = document.querySelector(".messages__div");
@@ -133,20 +134,22 @@ async function renderMessages() {
   }
 }
 
-socket.on("connect", function () {
-  fetch("/api/message")
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.error) {
-        window.location.replace("/");
-      }
-      if (data.data) {
-        data.data.forEach((roomId) => {
-          socket.emit("join_room", roomId.toString());
-        });
-      }
-    });
+socket.on("connect", () => {
+  joinRoom();
 });
+
+async function joinRoom() {
+  const response = await fetch("/api/message");
+  const data = await response.json();
+  if (data.error) {
+    window.location.replace("/");
+  }
+  if (data.data) {
+    data.data.forEach((roomId) => {
+      socket.emit("join_room", roomId.toString());
+    });
+  }
+}
 
 function sendMessage() {
   const messageText = document.querySelector("#messageText");
@@ -217,3 +220,4 @@ function updatefriend(data) {
   document.querySelector(".friend__list").prepend(updatemsg);
 }
 renderMessages();
+fetchMsg();

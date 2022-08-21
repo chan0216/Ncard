@@ -120,15 +120,16 @@ const getHotpost = async () => {
 function selectid(checkid) {
   window.location.href = `/post/${checkid}`;
 }
-fetch("/api/user")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    let res = data;
-    if (res.ok) {
-      document.querySelector(".member__tag").style.display = "block";
-    } else {
-      document.querySelector(".visitor__tag").style.display = "block";
-    }
-  });
+
+async function checkUser() {
+  const response = await fetch("/api/user");
+  const data = await response.json();
+  let res = data;
+  if (res.ok) {
+    document.querySelector(".member__tag").style.display = "block";
+  } else {
+    document.querySelector(".visitor__tag").style.display = "block";
+  }
+}
+
+checkUser();

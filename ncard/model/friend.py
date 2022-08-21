@@ -1,6 +1,5 @@
 from model.db import con_pool
 from model.model import redis
-from flask import Flask, jsonify
 import json
 
 
@@ -35,28 +34,28 @@ def get_all_friends(current_user):
 
 def get_friend(id, current_user):
     try:
-        friend_id = f"{current_user}_friend_{id}"
         db = con_pool.get_connection()
         cursor = db.cursor(buffered=True, dictionary=True)
-        redis_data = redis.get(friend_id)
-        if redis_data:
-            json_data = json.loads(redis_data)
-            return {"data": json_data}, 200
+        cursor.execute(
+            "select ncard_id,user_id from message where ncard_id =(select id from friend where (user1=%s and user2=%s  and friendship IS true) or (user1=%s and user2=%s  and friendship IS true) ) group by user_id", (id, current_user, current_user, id))
+        users = cursor.fetchall()
+        users_list = []
+        ncard_list = []
+        for user in users:
+            users_list.append(user["user_id"])
+            ncard_list.append(user["ncard_id"])
+        if current_user not in users_list:
+            return{"error": True, "message": "此人不是你的好友"}, 400
         else:
-            cursor.execute(
-                "select user_id,name,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (id,))
-            friend = cursor.fetchone()
-            cursor.execute(
-                "select ncard_id,user_id from message where ncard_id =(select id from friend where (user1=%s and user2=%s  and friendship IS true) or (user1=%s and user2=%s  and friendship IS true) ) group by user_id", (id, current_user, current_user, id))
-            users = cursor.fetchall()
-            users_list = []
-            ncard_list = []
-            for user in users:
-                users_list.append(user["user_id"])
-                ncard_list.append(user["ncard_id"])
-            if current_user not in users_list:
-                return{"error": True, "message": "此人不是你的好友"}, 400
+            card_id = f"card_{id}"
+            redis_data = redis.get(card_id)
+            if redis_data:
+                json_data = json.loads(redis_data)
+                return {"data": json_data, "from": "redis"}, 200
             else:
+                cursor.execute(
+                    "select user_id,name,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (id,))
+                friend = cursor.fetchone()
                 friend_data = {
                     "ncardId": ncard_list[0],
                     "friendId": friend["user_id"],
@@ -72,7 +71,7 @@ def get_friend(id, current_user):
                     'trying': friend["trying"]
                 }
                 friend_info = json.dumps(friend_data)
-                redis.set(friend_id, friend_info, ex=600)
+                redis.set(card_id, friend_info, ex=900)
                 return {"data": friend_data}
     except Exception as e:
         raise e

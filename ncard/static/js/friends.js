@@ -1,4 +1,4 @@
-async function fetchFriendData() {
+async function fetchFriendsData() {
   const response = await fetch("/api/friend");
   const data = await response.json();
   if (data.data) {
@@ -31,4 +31,4 @@ async function fetchFriendData() {
     document.querySelector(".nofriend ").style.display = "flex";
   }
 }
-fetchFriendData();
+fetchFriendsData();

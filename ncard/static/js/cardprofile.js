@@ -1,5 +1,7 @@
 const proWarning = document.querySelector(".profile__warning");
 const ncardCard = document.querySelector(".ncard__card");
+
+//確認會員狀態
 async function checkStatus() {
   const response = await fetch("/api/status");
   const data = await response.json();
@@ -17,7 +19,6 @@ async function checkStatus() {
 async function getProfile() {
   const response = await fetch("/api/profile");
   const data = await response.json();
-  console.log(data.data);
   if (data.data) {
     let info = data.data;
     let image = document.createElement("img");
@@ -41,27 +42,29 @@ async function getProfile() {
     }
   }
 }
-//上傳頭貼
+//上傳照片
 document.querySelector("#upload_img").addEventListener("change", (event) => {
   let file = event.target.files[0];
   let data = new FormData();
   data.append("file", file);
-  fetch("/api/image", {
+  uploadImg(data);
+});
+
+async function uploadImg(data) {
+  let imageSet = {
     method: "POST",
     body: data,
-  })
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      document.querySelector(".imagediv").innerHTML = "";
-      let image = document.createElement("img");
-      image.src = data["imgurl"];
-      image.setAttribute("id", "ncardimage");
-      image.classList.add("image");
-      document.querySelector(".imagediv").appendChild(image);
-    });
-});
+  };
+  const response = await fetch("/api/image", imageSet);
+  const res = await response.json();
+  document.querySelector(".imagediv").innerHTML = "";
+  let image = document.createElement("img");
+  image.src = res["imgurl"];
+  image.setAttribute("id", "ncardimage");
+  image.classList.add("image");
+  document.querySelector(".imagediv").appendChild(image);
+}
+
 //填寫自我介紹
 const postNcard = async () => {
   const ncardImage = document.querySelector("#ncardimage");

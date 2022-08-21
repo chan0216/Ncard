@@ -185,35 +185,34 @@ const getComment = async () => {
   }
 };
 getComment();
-fetch("/api/validation")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    if (data.error) {
-      document.querySelector(".comment_warning").textContent = "請先登入！";
-      return;
+async function checkVal() {
+  const result = await fetch("/api/validation");
+  const data = await result.json();
+  if (data.error) {
+    document.querySelector(".comment_warning").textContent = "請先登入！";
+    return;
+  }
+  if (data.data == null) {
+    document.querySelector(".comment_warning").textContent =
+      "請先填寫基本資料才能留言喔！";
+    return;
+  }
+  if (data.data) {
+    document.querySelector(".post__school").textContent = data.data.school;
+    document.querySelector(".user__time").textContent = now;
+    let icon = document.createElement("i");
+    icon.classList.add("bi-person-circle");
+    if (data.data.gender == "F") {
+      icon.classList.add("women");
+      icon.style.display = "block";
+    } else {
+      icon.classList.add("man");
+      icon.style.display = "block";
     }
-    if (data.data == null) {
-      document.querySelector(".comment_warning").textContent =
-        "請先填寫基本資料才能留言喔！";
-      return;
-    }
-    if (data.data) {
-      document.querySelector(".post__school").textContent = data.data.school;
-      document.querySelector(".user__time").textContent = now;
-      let icon = document.createElement("i");
-      icon.classList.add("bi-person-circle");
-      if (data.data.gender == "F") {
-        icon.classList.add("women");
-        icon.style.display = "block";
-      } else {
-        icon.classList.add("man");
-        icon.style.display = "block";
-      }
-      document.querySelector(".user__gender").append(icon);
-    }
-  });
+    document.querySelector(".user__gender").append(icon);
+  }
+}
+checkVal();
 //上傳圖片
 document.querySelector("#upload_img").addEventListener("change", (event) => {
   let file = event.target.files[0];
@@ -236,16 +235,12 @@ document.querySelector("#upload_img").addEventListener("change", (event) => {
       comment__box.append(imageDiv);
     });
 });
-function showmessage() {
-  fetch("/api/validation")
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      if (data.data) {
-        document.querySelector(".full__comment").style.display = "block";
-      }
-    });
+async function showmessage() {
+  const result = await fetch("/api/validation");
+  const data = await result.json();
+  if (data.data) {
+    document.querySelector(".full__comment").style.display = "block";
+  }
 }
 function hideMessage() {
   document.querySelector(".full__comment").style.display = "none";

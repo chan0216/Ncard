@@ -65,61 +65,61 @@ document.querySelector("#upload_img").addEventListener("change", (event) => {
       newpostContent.append(imageDiv);
     });
 });
-fetch("/api/validation")
-  .then((response) => {
-    return response.json();
-  })
-  .then((data) => {
-    if (data.error) {
-      document.querySelector(".submit").disabled = true;
-      document.querySelector(".Prompt ").textContent = "請先登入才能發文喔！";
-      return;
+
+async function checkValidation() {
+  const response = await fetch("/api/validation");
+  const data = await response.json();
+  if (data.error) {
+    document.querySelector(".submit").disabled = true;
+    document.querySelector(".Prompt ").textContent = "請先登入才能發文喔！";
+    return;
+  }
+  if (data.data) {
+    if (data.data.gender == "F") {
+      let newpostData = document.querySelector(".newpost__data");
+      let women = document.querySelector(".women");
+      women.style.display = "block";
+      let school = document.createElement("p");
+      school.textContent = data.data.school;
+      let date = new Date();
+      let now =
+        date.getFullYear() +
+        "/" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        ("0" + date.getDate()).slice(-2) +
+        " " +
+        ("0" + date.getHours()).slice(-2) +
+        ":" +
+        ("0" + date.getMinutes()).slice(-2) +
+        ":" +
+        ("0" + date.getSeconds()).slice(-2);
+      newpostData.append(school, now);
+    } else if (data.data.gender == "M") {
+      let newpostData = document.querySelector(".newpost__data");
+      let man = document.querySelector(".man");
+      man.style.display = "block";
+      let school = document.createElement("p");
+      school.textContent = data.data.school;
+      let date = new Date();
+      let now =
+        date.getFullYear() +
+        "/" +
+        ("0" + (date.getMonth() + 1)).slice(-2) +
+        "/" +
+        ("0" + date.getDate()).slice(-2) +
+        " " +
+        ("0" + date.getHours()).slice(-2) +
+        ":" +
+        ("0" + date.getMinutes()).slice(-2) +
+        ":" +
+        ("0" + date.getSeconds()).slice(-2);
+      newpostData.append(school, now);
     }
-    if (data.data) {
-      if (data.data.gender == "F") {
-        let newpostData = document.querySelector(".newpost__data");
-        let women = document.querySelector(".women");
-        women.style.display = "block";
-        let school = document.createElement("p");
-        school.textContent = data.data.school;
-        let date = new Date();
-        let now =
-          date.getFullYear() +
-          "/" +
-          ("0" + (date.getMonth() + 1)).slice(-2) +
-          "/" +
-          ("0" + date.getDate()).slice(-2) +
-          " " +
-          ("0" + date.getHours()).slice(-2) +
-          ":" +
-          ("0" + date.getMinutes()).slice(-2) +
-          ":" +
-          ("0" + date.getSeconds()).slice(-2);
-        newpostData.append(school, now);
-      } else if (data.data.gender == "M") {
-        let newpostData = document.querySelector(".newpost__data");
-        let man = document.querySelector(".man");
-        man.style.display = "block";
-        let school = document.createElement("p");
-        school.textContent = data.data.school;
-        let date = new Date();
-        let now =
-          date.getFullYear() +
-          "/" +
-          ("0" + (date.getMonth() + 1)).slice(-2) +
-          "/" +
-          ("0" + date.getDate()).slice(-2) +
-          " " +
-          ("0" + date.getHours()).slice(-2) +
-          ":" +
-          ("0" + date.getMinutes()).slice(-2) +
-          ":" +
-          ("0" + date.getSeconds()).slice(-2);
-        newpostData.append(school, now);
-      }
-    } else {
-      document.querySelector(".submit").disabled = true;
-      document.querySelector(".Prompt ").textContent =
-        "請先填基本資料才能發文喔！";
-    }
-  });
+  } else {
+    document.querySelector(".submit").disabled = true;
+    document.querySelector(".Prompt ").textContent =
+      "請先填基本資料才能發文喔！";
+  }
+}
+checkValidation();

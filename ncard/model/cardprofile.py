@@ -1,4 +1,5 @@
 from model.db import con_pool
+from model.model import redis
 
 
 def get_profile(current_user):
@@ -28,7 +29,6 @@ def post_profile(current_user, data):
         user_data = cursor.fetchone()
 
         if user_data["type"] == "profile":
-
             sql = "UPDATE user SET type=%s,image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s,match_list=%s where user_id=%s"
             val = ("ncard", data["ncardImage"], data["interest"], data["club"], data["course"],
                    data["country"], data["worry"], data["exchange"], data["trying"], '[]', current_user)
@@ -37,6 +37,8 @@ def post_profile(current_user, data):
         else:
             cursor.execute("UPDATE user SET image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s where user_id=%s", (
                 data["ncardImage"], data["interest"], data["club"], data["course"], data["country"], data["worry"], data["exchange"], data["trying"], current_user))
+            card_id = f"card_{current_user}"
+            redis.delete(card_id)
             db.commit()
         return {"ok": True}
     except Exception as e:
