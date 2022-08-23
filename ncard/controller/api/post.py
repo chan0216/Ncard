@@ -23,7 +23,6 @@ def post_image():
 @dec.token_required
 def add_new_post(current_user):
     try:
-
         data = request. json
         first_img = None
         imgs = re.search(

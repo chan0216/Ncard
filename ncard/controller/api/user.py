@@ -26,7 +26,6 @@ def user_signin():
             return {"Error": True, "message": "Could not verify audience"}, 403
         else:
             username = id_info["sub"]
-
     # 原生系統登入
     else:
         username = data['email']

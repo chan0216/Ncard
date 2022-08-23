@@ -27,7 +27,6 @@ def post_profile(current_user, data):
         cursor.execute(
             "select type from user where user_id=%s", (current_user,))
         user_data = cursor.fetchone()
-
         if user_data["type"] == "profile":
             sql = "UPDATE user SET type=%s,image=%s,interest=%s,club=%s,course=%s,country=%s, worry=%s, exchange=%s,trying=%s,match_list=%s where user_id=%s"
             val = ("ncard", data["ncardImage"], data["interest"], data["club"], data["course"],
