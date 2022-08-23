@@ -1,7 +1,6 @@
 from flask import *
 import jwt
 from decouple import config
-from model.db import con_pool
 import controller.decorator as dec
 import model.chats
 chats_blueprint = Blueprint("chats", __name__)

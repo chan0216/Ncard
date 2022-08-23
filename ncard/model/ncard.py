@@ -37,7 +37,6 @@ def get_ncard(current_user, today, yesterday):
                 cursor.execute(
                     "select user_id,gender,name,school,image,interest,club,course,country,worry,exchange,trying from user where user_id=%s", (user2["user1"],))
                 match_user = cursor.fetchone()
-
             match_user_data = {
                 "invited": invited,
                 "is_friend": is_friend,

@@ -14,7 +14,7 @@ app.register_blueprint(controller.api.friend_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.chats_blueprint, url_prefix='/api')
 app.register_blueprint(controller.api.comments_blueprint, url_prefix='/api')
 app.register_blueprint(controller.pages)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins='*')
 
 
 @socketio.on('join_room')

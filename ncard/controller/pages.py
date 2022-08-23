@@ -1,30 +1,8 @@
 from flask import *
-from functools import wraps
-import jwt
-from model.db import con_pool
 import model.main
-from decouple import config
+import controller.decorator as dec
+
 pages = Blueprint("pages", __name__)
-
-
-def token_required(f):
-    @wraps(f)
-    def decorated():
-        token = request.cookies.get('token')
-        if not token:
-            res = make_response(
-                jsonify({"error": True, "message": "未登入系統，拒絕存取"}), 403)
-            return res
-        try:
-            jwtdata = jwt.decode(token.encode('UTF-8'),
-                                 config("secret_key"), algorithms=["HS256"])
-            current_user = jwtdata["user_id"]
-        except Exception as e:
-            res = make_response(
-                jsonify({"error": True, "message": "伺服器內部錯誤"}), 500)
-            return res
-        return f(current_user)
-    return decorated
 
 
 @pages.route("/")
@@ -78,7 +56,7 @@ def get_friend_data(id):
 
 
 @pages.route('/chats', methods=['GET'])
-@token_required
+@dec.token_required
 def redirect_msg(current_user):
     resp = model.main.redirect_msg(current_user)
     if resp:
