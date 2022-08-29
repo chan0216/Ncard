@@ -1,0 +1,14 @@
+python-decouple
+Flask
+redis
+boto3
+mysql-connector-python
+python-dotenv 
+flask-mail
+flask-bcrypt
+google-auth                
+google-auth-oauthlib 
+PyJWT
+Flask-SocketIO
+gunicorn==20.1.0
+eventlet==0.30.2
