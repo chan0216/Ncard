@@ -142,3 +142,4 @@ certificate.crt
 process.log
 
 private/
+.DS_Store
