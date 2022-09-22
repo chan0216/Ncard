@@ -36,7 +36,7 @@ Password：test
 
 ## System Architecture
 
-<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/185862215-39426697-c383-44dc-8712-db6d6620ab45.png">
+<img width="800" alt="image" src="https://user-images.githubusercontent.com/94737861/191785296-44e9ebf3-89fe-4e2b-a071-56ccef0d69aa.png">
 
 ## Database Schema
 
